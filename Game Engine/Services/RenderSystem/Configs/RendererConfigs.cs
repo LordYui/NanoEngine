@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Game_Engine.Services.RenderSystem.Configs
 {
-    class RendererConfigs
+    public class RendererConfigs
     {
         public RendererConfigs()
         {

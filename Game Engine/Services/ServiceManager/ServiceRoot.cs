@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Game_Engine.Services.ServiceMessage;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,12 +7,14 @@ using System.Threading.Tasks;
 
 namespace Game_Engine.Services.ServiceManager
 {
-    class ServiceRoot
+    public class ServiceRoot
     {
         public List<Service> Services;
+        MessageRoot _MessageRoot;
         public ServiceRoot()
         {
             Services = new List<Service>();
+            _MessageRoot = new MessageRoot();
             InitializeServices();
         }
 

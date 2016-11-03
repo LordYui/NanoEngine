@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Game_Engine.Services
 {
-    class Service
+    public class Service
     {
         public ServiceRoot Root;
         public Service()
