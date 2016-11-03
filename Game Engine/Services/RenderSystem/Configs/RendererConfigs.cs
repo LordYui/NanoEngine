@@ -4,10 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Game_Engine.Services.RenderSystem
+namespace Game_Engine.Services.RenderSystem.Configs
 {
-    class Renderer
+    class RendererConfigs
     {
+        public RendererConfigs()
+        {
 
+        }
     }
 }

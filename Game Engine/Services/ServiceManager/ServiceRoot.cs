@@ -31,5 +31,15 @@ namespace Game_Engine.Services.ServiceManager
                 Logman.Logger.Log(Logman.LogLevel.Info, "Service loaded: " + t.Name);
             }
         }
+
+        public T GetService<T>() where T : Service
+        {
+            foreach(Service srvc in Services)
+            {
+                if (typeof(T) == srvc.GetType())
+                    return (T)srvc;
+            }
+            throw new ArgumentException();
+        }
     }
 }

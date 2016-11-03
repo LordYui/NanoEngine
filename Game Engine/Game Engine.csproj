@@ -45,6 +45,7 @@
     <Compile Include="Injector\DependencyInjector.cs" />
     <Compile Include="Injector\InjectableAttribute.cs" />
     <Compile Include="Logman\Log.cs" />
+    <Compile Include="Services\RenderSystem\Configs\RendererConfigs.cs" />
     <Compile Include="Services\ServiceManager\ServiceRoot.cs" />
     <Compile Include="Settings\Settings.cs" />
     <Compile Include="Services\GameNodes\NodeSystem.cs" />
