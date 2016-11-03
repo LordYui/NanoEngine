@@ -25,7 +25,10 @@ namespace Game_Engine.Services.ServiceManager
 
             foreach(Type t in serviceSubclasses)
             {
-                Services.Add((Service)Activator.CreateInstance(t));
+                Service srvc = (Service)Activator.CreateInstance(t);
+                srvc.Root = this;
+                Services.Add(srvc);
+                Logman.Logger.Log(Logman.LogLevel.Info, "Service loaded: " + t.Name);
             }
         }
     }

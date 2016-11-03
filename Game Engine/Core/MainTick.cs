@@ -16,6 +16,7 @@ namespace Game_Engine.Core
         public MainTick()
         {
             srvcRoot = new ServiceRoot();
+            Tick();
         }
 
         void Tick()
@@ -23,9 +24,9 @@ namespace Game_Engine.Core
             isRunning = true;
             while (isRunning)
             {
-
+                Console.ReadLine();
+                Time.lastUpdate = DateTime.Now;
             }    
-            Time.lastUpdate = DateTime.Now;
         }
     }
 }

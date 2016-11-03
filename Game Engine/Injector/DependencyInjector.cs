@@ -91,22 +91,4 @@ namespace Game_Engine.Injector
 
         }
     }
-
-    [Injectable(typeof(NodeSystem))]
-    class TestAttr
-    {
-        NodeSystem _b;
-        public NodeSystem _b2;
-        public TestAttr()
-        {
-            this.Inject();
-
-            Logger.Log(LogLevel.Debug, "_b exists: ", _b != null);
-            Logger.Log(LogLevel.Debug, "_b2 exists: ", _b2 != null);
-
-            _b.RunUpdates();
-
-            Console.ReadLine();
-        }
-    }
 }
