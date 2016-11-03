@@ -44,10 +44,12 @@
     <Compile Include="Entry.cs" />
     <Compile Include="Injector\DependencyInjector.cs" />
     <Compile Include="Injector\InjectableAttribute.cs" />
-    <Compile Include="Render\RendererTick.cs" />
+    <Compile Include="Logman\Log.cs" />
     <Compile Include="Settings\Settings.cs" />
-    <Compile Include="Systems\Bridge.cs" />
+    <Compile Include="Systems\GameNodes\NodeSystem.cs" />
     <Compile Include="Systems\GameNodes\GameNode.cs" />
+    <Compile Include="Systems\RenderSystem\Renderer.cs" />
+    <Compile Include="Systems\SubSystem.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

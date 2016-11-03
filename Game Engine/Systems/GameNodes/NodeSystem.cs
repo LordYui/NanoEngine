@@ -1,22 +1,20 @@
-﻿using Game_Engine.Render;
-using Game_Engine.Systems.GameNodes;
+﻿using Game_Engine.Systems.GameNodes;
 using System;
 using System.Collections.Generic;
 using Game_Engine.Injector;
 
 namespace Game_Engine.Systems
 {
-    class Bridge
+    class NodeSystem
     {
-        RendererTick gameRenderer;
         List<GameNode> gameNodes = new List<GameNode>();
 
-        public Bridge()
+        public NodeSystem()
         {
-            DependencyInjector.RegisterService<Bridge>(this);
+            DependencyInjector.RegisterService<NodeSystem>(this);
         }
 
-        public Bridge(RendererTick gR)
+        public NodeSystem(RendererTick gR)
         {
             gameRenderer = gR;
         }

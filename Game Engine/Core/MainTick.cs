@@ -9,15 +9,16 @@ namespace Game_Engine.Core
 {
     class MainTick
     {
-        Bridge _Bridge;
+        NodeSystem _nodeSystem;
+        
         public MainTick()
         {
-            _Bridge = new Bridge();
+            _nodeSystem = new NodeSystem();
         }
 
         void Tick()
         {
-
+            _nodeSystem.RunUpdates();
             Time.lastUpdate = DateTime.Now;
         }
     }

@@ -3,6 +3,7 @@ using System.Reflection;
 using Game_Engine.Systems;
 using System.Collections.Generic;
 using System.Diagnostics;
+using Game_Engine.Logman;
 
 namespace Game_Engine.Injector
 {
@@ -26,8 +27,14 @@ namespace Game_Engine.Injector
 
         public static void RegisterService<T>(T o)
         {
-            _injectableTypes.Add(typeof(T));
-            _injectableServices.Add(o);
+            if (!_injectableTypes.Contains(typeof(T)))
+            {
+                if (_injectableTypes.Find(sr => sr.GetType() == o.GetType()) == null)
+                {
+                    _injectableTypes.Add(typeof(T));
+                    _injectableServices.Add(o);
+                }
+            }
         }
 
         public static T InjectAndCreateOfType<T>()
@@ -85,17 +92,19 @@ namespace Game_Engine.Injector
         }
     }
 
-    [Injectable(typeof(Bridge))]
+    [Injectable(typeof(NodeSystem))]
     class TestAttr
     {
-        Bridge _b;
-        public Bridge _b2;
+        NodeSystem _b;
+        public NodeSystem _b2;
         public TestAttr()
         {
             this.Inject();
 
-            Console.WriteLine("_b exists: " + (_b != null));
-            Console.WriteLine("_b2 exists: " + (_b2 != null));
+            Logger.Log(LogLevel.Debug, "_b exists: ", _b != null);
+            Logger.Log(LogLevel.Debug, "_b2 exists: ", _b2 != null);
+
+            _b.RunUpdates();
 
             Console.ReadLine();
         }
