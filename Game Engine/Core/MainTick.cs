@@ -1,4 +1,5 @@
-﻿using Game_Engine.Systems;
+﻿using Game_Engine.Services;
+using Game_Engine.Services.ServiceManager;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,16 +10,21 @@ namespace Game_Engine.Core
 {
     class MainTick
     {
-        NodeSystem _nodeSystem;
-        
+        ServiceRoot srvcRoot;
+        bool isRunning = false;
+
         public MainTick()
         {
-            _nodeSystem = new NodeSystem();
+            srvcRoot = new ServiceRoot();
         }
 
         void Tick()
         {
-            _nodeSystem.RunUpdates();
+            isRunning = true;
+            while (isRunning)
+            {
+
+            }    
             Time.lastUpdate = DateTime.Now;
         }
     }

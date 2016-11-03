@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Reflection;
-using Game_Engine.Systems;
+using Game_Engine.Services;
 using System.Collections.Generic;
 using System.Diagnostics;
 using Game_Engine.Logman;
@@ -25,13 +25,13 @@ namespace Game_Engine.Injector
             throw new ArgumentException();
         }
 
-        public static void RegisterService<T>(T o)
+        public static void RegisterService(Service o)
         {
-            if (!_injectableTypes.Contains(typeof(T)))
+            if (!_injectableTypes.Contains(o.GetType()))
             {
                 if (_injectableTypes.Find(sr => sr.GetType() == o.GetType()) == null)
                 {
-                    _injectableTypes.Add(typeof(T));
+                    _injectableTypes.Add(o.GetType());
                     _injectableServices.Add(o);
                 }
             }

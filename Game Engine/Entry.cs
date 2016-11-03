@@ -13,7 +13,6 @@ namespace Game_Engine
         static void Main()
         {
             MainTick mTick = new MainTick();
-            TestAttr t = new TestAttr();
         }
     }
 }

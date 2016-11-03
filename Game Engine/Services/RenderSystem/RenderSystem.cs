@@ -4,9 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Game_Engine.Systems.RenderSystem
+namespace Game_Engine.Services.RenderSystem
 {
-    class Renderer
+    class RenderSystem : Service
     {
+        public RenderSystem()
+        {
+
+        }
     }
 }

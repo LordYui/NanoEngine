@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Game_Engine.Systems.GameNodes
+namespace Game_Engine.Services.GameNodes
 {
     class GameNode
     {
