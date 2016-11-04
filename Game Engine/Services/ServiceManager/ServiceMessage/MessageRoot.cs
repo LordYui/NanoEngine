@@ -10,6 +10,11 @@ namespace Game_Engine.Services.ServiceManager.ServiceMessage
 {
     class MessageRoot
     {
+        Service _Parent;
+        public MessageRoot(Service parent)
+        {
+            _Parent = parent;
+        }
         List<MessageDefinition> msgDefs = new List<MessageDefinition>();
         internal void On(string n, MessageAct a)
         {
@@ -23,6 +28,12 @@ namespace Game_Engine.Services.ServiceManager.ServiceMessage
             MessageDefinition d = msgDefs.Find(m => m.Name == n);
             if (d.Name != null)
                 d.Act.DynamicInvoke(args);
+        }
+
+        public void Send(Type trgtSrvcType, string m, params object[] args)
+        {
+            Service c = _Parent.SrvcRoot.GetService(trgtSrvcType);
+            c.Message.Receive(m, _Parent, args);
         }
     }
 

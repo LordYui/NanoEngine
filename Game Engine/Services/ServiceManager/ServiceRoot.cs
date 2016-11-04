@@ -56,5 +56,15 @@ namespace Game_Engine.Services.ServiceManager
             }
             throw new ArgumentException();
         }
+
+        public Service GetService( Type T)
+        {
+            foreach (Service srvc in _Services)
+            {
+                if (T == srvc.GetType())
+                    return srvc;
+            }
+            throw new ArgumentException();
+        }
     }
 }
