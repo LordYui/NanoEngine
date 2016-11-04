@@ -13,8 +13,10 @@ namespace Game_Engine.Services.RenderSystem
     {
         Renderer _Renderer;
         List<Atom> atomBuffer = new List<Atom>();
-        public RenderService()
+
+        public override void Init()
         {
+            base.Init();
             Message.On("append-buffer", new MessageAct(appendBuffer));
         }
 
@@ -31,7 +33,7 @@ namespace Game_Engine.Services.RenderSystem
 
         public void Start()
         {
-            if(_Renderer == null)
+            if (_Renderer == null)
             {
                 Logman.Logger.Log(Logman.LogLevel.Errors, "Renderer configs must be set before trying to start the service.");
                 return;

@@ -24,5 +24,6 @@ namespace Game_Engine.Services
         }
 
         abstract internal void UpdateService(double delta);
+        virtual public void Init() { }
     }
 }

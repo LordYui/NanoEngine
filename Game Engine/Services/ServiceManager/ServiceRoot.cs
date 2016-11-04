@@ -31,6 +31,7 @@ namespace Game_Engine.Services.ServiceManager
                 srvc.SrvcRoot = this;
                 MessageRoot msgR = Activator.CreateInstance<MessageRoot>();
                 srvc.Message = msgR;
+                srvc.Init();
                 _Services.Add(srvc);
                 Logman.Logger.Log(Logman.LogLevel.Info, "Service loaded: " + t.Name);
             }
