@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace Game_Engine.Services.GameNodes
 {
     [Injector.Injectable(typeof(RenderService))]
-    class GameNode
+    class GameNode : SystemBase
     {
         static int _ID = 0;
         public int ID;
@@ -20,6 +20,7 @@ namespace Game_Engine.Services.GameNodes
         public GameNode()
         {
             ID = _ID++;
+            _Modules = new List<NodeModule>();
         }
         
 

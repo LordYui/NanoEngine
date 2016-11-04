@@ -27,5 +27,7 @@ namespace Game_Engine.Services.GameNodes
 
             return new RenderBuf();
         }
+
+        internal virtual void Start() { }
     }
 }

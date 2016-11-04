@@ -14,7 +14,7 @@ namespace Game_Engine.Services.RenderSystem
         Renderer _Renderer;
         List<Atom> atomBuffer = new List<Atom>();
 
-        public override void Init()
+        internal override void Init()
         {
             base.Init();
             Message.On("append-buffer", new MessageAct(appendBuffer));

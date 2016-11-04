@@ -48,8 +48,10 @@
     <Compile Include="Objects\Atom.cs" />
     <Compile Include="Objects\Internals\BaseObject.cs" />
     <Compile Include="Objects\Internals\RenderBuf.cs" />
-    <Compile Include="Services\GameNodes\NodeModule.cs" />
+    <Compile Include="Objects\Internals\SceneBase.cs" />
+    <Compile Include="Services\GameNodes\NodeModules\NodeModule.cs" />
     <Compile Include="Services\GameNodes\NodeModules\SceneModule.cs" />
+    <Compile Include="Services\GameNodes\SystemBase.cs" />
     <Compile Include="Services\RenderSystem\Configs\RendererConfigs.cs" />
     <Compile Include="Services\ServiceManager\ServiceRoot.cs" />
     <Compile Include="Services\ServiceManager\ServiceMessage\MessageRoot.cs" />

@@ -29,7 +29,7 @@ namespace Game_Engine.Services.ServiceManager
             {
                 Service srvc = (Service)Activator.CreateInstance(t);
                 srvc.SrvcRoot = this;
-                MessageRoot msgR = Activator.CreateInstance<MessageRoot>();
+                MessageRoot msgR = (MessageRoot)Activator.CreateInstance(typeof(MessageRoot), srvc); ;
                 srvc.Message = msgR;
                 srvc.Init();
                 _Services.Add(srvc);

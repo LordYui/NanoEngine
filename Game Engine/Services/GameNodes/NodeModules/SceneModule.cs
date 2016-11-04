@@ -8,6 +8,11 @@ namespace Game_Engine.Services.GameNodes.NodeModules
 {
     class SceneModule : NodeModule
     {
+        internal override void Start()
+        {
+            base.Start();
+        }
+
         internal override void UpdateModule(double delta)
         {
             throw new NotImplementedException();
