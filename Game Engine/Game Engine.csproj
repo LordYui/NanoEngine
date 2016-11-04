@@ -45,10 +45,14 @@
     <Compile Include="Injector\DependencyInjector.cs" />
     <Compile Include="Injector\InjectableAttribute.cs" />
     <Compile Include="Logman\Log.cs" />
+    <Compile Include="Objects\Atom.cs" />
+    <Compile Include="Objects\Internals\BaseObject.cs" />
+    <Compile Include="Objects\Internals\RenderBuf.cs" />
+    <Compile Include="Services\GameNodes\NodeModule.cs" />
+    <Compile Include="Services\GameNodes\NodeModules\SceneModule.cs" />
     <Compile Include="Services\RenderSystem\Configs\RendererConfigs.cs" />
     <Compile Include="Services\ServiceManager\ServiceRoot.cs" />
-    <Compile Include="Services\ServiceMessage\MessageAttribute.cs" />
-    <Compile Include="Services\ServiceMessage\MessageRoot.cs" />
+    <Compile Include="Services\ServiceManager\ServiceMessage\MessageRoot.cs" />
     <Compile Include="Settings\Settings.cs" />
     <Compile Include="Services\GameNodes\NodeSystem.cs" />
     <Compile Include="Services\GameNodes\GameNode.cs" />

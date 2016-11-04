@@ -14,9 +14,12 @@ namespace Game_Engine.Services
             
         }
 
-        public void RunUpdates()
+        internal override void UpdateService(double delta)
         {
-
+            foreach(GameNode node in gameNodes)
+            {
+                node.Update(delta);
+            }
         }
     }
 }

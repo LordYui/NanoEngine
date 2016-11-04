@@ -1,5 +1,6 @@
-﻿using Game_Engine.Services.RenderSystem.Configs;
-using Game_Engine.Services.ServiceMessage;
+﻿using Game_Engine.Objects;
+using Game_Engine.Services.RenderSystem.Configs;
+using Game_Engine.Services.ServiceManager.ServiceMessage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,15 +9,21 @@ using System.Threading.Tasks;
 
 namespace Game_Engine.Services.RenderSystem
 {
-    public class RenderSystem : Service
+    internal class RenderService : Service
     {
         Renderer _Renderer;
-        public RenderSystem()
+        List<Atom> atomBuffer = new List<Atom>();
+        public RenderService()
         {
-
+            Message.On("append-buffer", new MessageAct(appendBuffer));
         }
 
-        [Message(typeof(RendererConfigs))]
+        void appendBuffer(params object[] o)
+        {
+            Atom[] aL = (Atom[])o;
+            atomBuffer.AddRange(aL);
+        }
+
         public void SetConfig(RendererConfigs conf)
         {
             _Renderer = new Renderer(conf);
@@ -29,6 +36,11 @@ namespace Game_Engine.Services.RenderSystem
                 Logman.Logger.Log(Logman.LogLevel.Errors, "Renderer configs must be set before trying to start the service.");
                 return;
             }
+        }
+
+        internal override void UpdateService(double delta)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -25,6 +25,7 @@ namespace Game_Engine.Core
             while (isRunning)
             {
                 Console.ReadLine();
+                srvcRoot.UpdateServices(Time.deltaTime);
                 Time.lastUpdate = DateTime.Now;
             }    
         }

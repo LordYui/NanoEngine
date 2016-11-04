@@ -1,4 +1,5 @@
-﻿using Game_Engine.Services.ServiceMessage;
+﻿
+using Game_Engine.Services.ServiceManager.ServiceMessage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,14 +8,12 @@ using System.Threading.Tasks;
 
 namespace Game_Engine.Services.ServiceManager
 {
-    public class ServiceRoot
+    internal class ServiceRoot
     {
-        public List<Service> Services;
-        MessageRoot _MessageRoot;
+        List<Service> _Services;
         public ServiceRoot()
         {
-            Services = new List<Service>();
-            _MessageRoot = new MessageRoot();
+            _Services = new List<Service>();
             InitializeServices();
         }
 
@@ -29,15 +28,27 @@ namespace Game_Engine.Services.ServiceManager
             foreach(Type t in serviceSubclasses)
             {
                 Service srvc = (Service)Activator.CreateInstance(t);
-                srvc.Root = this;
-                Services.Add(srvc);
+                srvc.SrvcRoot = this;
+                MessageRoot msgR = Activator.CreateInstance<MessageRoot>();
+                srvc.Message = msgR;
+                _Services.Add(srvc);
                 Logman.Logger.Log(Logman.LogLevel.Info, "Service loaded: " + t.Name);
+            }
+
+            _Services = _Services.OrderBy(s => s.Priority).ToList();
+        }
+
+        internal void UpdateServices(double delta)
+        {
+            foreach(Service srvc in _Services)
+            {
+                srvc.UpdateService(delta);
             }
         }
 
         public T GetService<T>() where T : Service
         {
-            foreach(Service srvc in Services)
+            foreach(Service srvc in _Services)
             {
                 if (typeof(T) == srvc.GetType())
                     return (T)srvc;
