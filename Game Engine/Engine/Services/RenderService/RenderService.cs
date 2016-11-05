@@ -1,21 +1,17 @@
-﻿using Game_Engine.Engine.Services.RenderSystem;
-using Game_Engine.Objects;
-using Game_Engine.Services.RenderService.Configs;
-using Game_Engine.Services.RenderService.Internals;
+﻿using Game_Engine.Engine.Services.RenderService.Configs;
+using Game_Engine.Engine.Services.RenderSystem;
 using Game_Engine.Services.ServiceManager.ServiceMessage;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Game_Engine.Services.RenderService
 {
     internal class RenderService : Service
     {
-        Renderer _Renderer;
         Window _Window;
         List<object> renderBuf = new List<object>();
+
+        RenderConf _Conf;
 
         internal override void Init()
         {
@@ -28,7 +24,7 @@ namespace Game_Engine.Services.RenderService
         {
             foreach(object nO in o)
             {
-                if(_Renderer.isCorrectRenderContract(nO))
+                if(isCorrectRenderContract(nO))
                 {
                     renderBuf.Add(nO);
                 }
@@ -37,17 +33,17 @@ namespace Game_Engine.Services.RenderService
 
         void setConfig(object[] o)
         {
-            SetConfig(new RendererConfigs((Type)o[0]));
+            SetConfig(new RenderConf((Type)o[0]));
         }
 
-        public void SetConfig(RendererConfigs conf)
+        public void SetConfig(RenderConf conf)
         {
-            _Renderer = new Renderer(conf);
+            _Conf = conf;
         }
 
         public void Start()
         {
-            if (_Renderer == null)
+            if (_Conf == null)
             {
                 Logman.Logger.Log(Logman.LogLevel.Errors, "Renderer configs must be set before trying to start the service.");
                 return;
@@ -56,8 +52,16 @@ namespace Game_Engine.Services.RenderService
 
         internal override void UpdateService(double delta)
         {
-            _Renderer.Update(delta, renderBuf.ToArray());
+            //_Renderer.Update(delta, renderBuf.ToArray());
             renderBuf.Clear();
+        }
+
+        internal bool isCorrectRenderContract(object o)
+        {
+            Type t = _Conf.Contract;
+            if (o.GetType() == t)
+                return true;
+            return false;
         }
     }
 }
