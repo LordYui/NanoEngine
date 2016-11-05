@@ -21,7 +21,7 @@ namespace Game_Engine.Services
             var serviceSubclasses =
                 from assembly in AppDomain.CurrentDomain.GetAssemblies()
                 from type in assembly.GetTypes()
-                where type.IsSubclassOf(typeof(SystemBase))
+                where type.IsSubclassOf(typeof(_GameNodeParent))
                 select type;
 
             Type to = typeof(GameNode);

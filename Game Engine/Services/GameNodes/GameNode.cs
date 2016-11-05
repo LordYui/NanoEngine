@@ -10,8 +10,12 @@ using System.Threading.Tasks;
 
 namespace Game_Engine.Services.GameNodes
 {
+    abstract class _GameNodeParent
+    {
+    }
+
     [Injector.Injectable(typeof(RenderService))]
-    class GameNode : SystemBase
+    class GameNode : _GameNodeParent
     {
         static int _ID = 0;
         public int ID;
@@ -23,6 +27,25 @@ namespace Game_Engine.Services.GameNodes
             _Modules = new List<NodeModule>();
         }
         
+        private void initModules()
+        {
+            var serviceSubclasses =
+                from assembly in AppDomain.CurrentDomain.GetAssemblies()
+                from type in assembly.GetTypes()
+                where type.IsSubclassOf(typeof(NodeModule))
+                select type;
+
+            Type to = typeof(NodeModule);
+            foreach (Type t in serviceSubclasses)
+            {
+                if (t != to)
+                    return;
+                NodeModule nMod = (NodeModule)Activator.CreateInstance(t);
+                nMod.Start();
+                _Modules.Add(nMod);
+                Logman.Logger.Log(Logman.LogLevel.Info, "Node module loaded: " + t.Name);
+            }
+        }
 
         internal void Update(double delta)
         {

@@ -6,7 +6,5 @@ using System.Threading.Tasks;
 
 namespace Game_Engine.Services.GameNodes
 {
-    abstract class SystemBase
-    {
-    }
+    
 }

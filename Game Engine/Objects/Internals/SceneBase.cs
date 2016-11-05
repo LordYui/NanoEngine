@@ -8,7 +8,12 @@ namespace Game_Engine.Objects.Internals
 {
     abstract class SceneBase : BaseObject
     {
-        public SceneBase()
+        virtual public void Start()
+        {
+
+        }
+
+        virtual internal void Update(double delta)
         {
 
         }
