@@ -27,7 +27,7 @@ namespace Game_Engine.Services.GameNodes.NodeModules
             Type to = typeof(SceneBase);
             foreach (Type t in serviceSubclasses)
             {
-                if (t != to)
+                if (t.IsAssignableFrom(to))
                     return;
                 SceneBase nScen = (SceneBase)Activator.CreateInstance(t);
                 nScen.Start();

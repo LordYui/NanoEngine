@@ -27,6 +27,7 @@ namespace Game_Engine.Services.ServiceManager
 
             foreach(Type t in serviceSubclasses)
             {
+                Logman.Logger.Log(Logman.LogLevel.Info, "Loading service: " + t.Name);
                 Service srvc = (Service)Activator.CreateInstance(t);
                 srvc.SrvcRoot = this;
                 MessageRoot msgR = (MessageRoot)Activator.CreateInstance(typeof(MessageRoot), srvc); ;

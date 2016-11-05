@@ -4,6 +4,7 @@ using Game_Engine.Services;
 using System.Collections.Generic;
 using System.Diagnostics;
 using Game_Engine.Logman;
+using Game_Engine.Scripts;
 
 namespace Game_Engine.Injector
 {
@@ -48,19 +49,22 @@ namespace Game_Engine.Injector
                 {
                     toInject.AddRange(((InjectableAttribute)at).InjectTypes);
                 }
+                else if(at is ProviderAttribute)
+                {
+                    toInject.AddRange(((ProviderAttribute)at).InjectTypes);
+                }
             }
 
-            ConstructorInfo cInfo = t.GetConstructors()[0];
-            ParameterInfo[] pInfo = cInfo.GetParameters();
-            Type[] cTypes = new Type[pInfo.Length];
-            for (int i = 0; i < pInfo.Length; i++)
+            FieldInfo[] fInfos = t.GetFields(BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Public);
+            T retObj = (T)Activator.CreateInstance(t);
+            foreach (FieldInfo fI in fInfos)
             {
-                if (i > toInject.Count)
-                    break;
-                if (pInfo[i].ParameterType != toInject[i])
-                    throw new ArgumentException();
+                Type inj = _injectableTypes.Find((ty => ty == fI.FieldType));
+                if (inj == null)
+                    continue;
+
+                fI.SetValue(retObj, Convert.ChangeType(typeof(T), inj));
             }
-            T retObj = (T)Activator.CreateInstance(t, toInject);
 
             return retObj;
         }
@@ -78,7 +82,7 @@ namespace Game_Engine.Injector
                 }
             }
 
-            FieldInfo[] fInfos = t.GetFields(BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Public);
+            FieldInfo[] fInfos = t.GetFields(BindingFlags.NonPublic | BindingFlags.Instance);
             foreach (FieldInfo fI in fInfos)
             {
                 Type inj = _injectableTypes.Find((ty => ty == fI.FieldType));
@@ -88,7 +92,6 @@ namespace Game_Engine.Injector
                 object newSrvc = getServiceInstance(inj);
                 fI.SetValue(obj, Convert.ChangeType(newSrvc, inj));
             }
-
         }
     }
 }

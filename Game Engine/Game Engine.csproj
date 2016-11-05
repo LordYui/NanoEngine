@@ -44,15 +44,19 @@
     <Compile Include="Entry.cs" />
     <Compile Include="Injector\DependencyInjector.cs" />
     <Compile Include="Injector\InjectableAttribute.cs" />
+    <Compile Include="Input.cs" />
     <Compile Include="Logman\Log.cs" />
     <Compile Include="Objects\Atom.cs" />
     <Compile Include="Objects\Internals\BaseObject.cs" />
     <Compile Include="Objects\Internals\RenderBuf.cs" />
     <Compile Include="Objects\Internals\SceneBase.cs" />
+    <Compile Include="Scripts\ProviderAttribute.cs" />
     <Compile Include="Services\GameNodes\NodeModules\NodeModule.cs" />
     <Compile Include="Services\GameNodes\NodeModules\SceneModule.cs" />
     <Compile Include="Services\GameNodes\SystemBase.cs" />
+    <Compile Include="Services\Input\InputSystem.cs" />
     <Compile Include="Services\RenderSystem\Configs\RendererConfigs.cs" />
+    <Compile Include="Services\Scripts\ScriptService.cs" />
     <Compile Include="Services\ServiceManager\ServiceRoot.cs" />
     <Compile Include="Services\ServiceManager\ServiceMessage\MessageRoot.cs" />
     <Compile Include="Settings\Settings.cs" />
@@ -61,6 +65,7 @@
     <Compile Include="Services\RenderSystem\Renderer.cs" />
     <Compile Include="Services\RenderSystem\RenderSystem.cs" />
     <Compile Include="Services\Service.cs" />
+    <Compile Include="TestScene.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

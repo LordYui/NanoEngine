@@ -25,6 +25,7 @@ namespace Game_Engine.Services.GameNodes
         {
             ID = _ID++;
             _Modules = new List<NodeModule>();
+            initModules();
         }
         
         private void initModules()
@@ -38,7 +39,7 @@ namespace Game_Engine.Services.GameNodes
             Type to = typeof(NodeModule);
             foreach (Type t in serviceSubclasses)
             {
-                if (t != to)
+                if (t.IsAssignableFrom(to))
                     return;
                 NodeModule nMod = (NodeModule)Activator.CreateInstance(t);
                 nMod.Start();
