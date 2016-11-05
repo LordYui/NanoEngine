@@ -4,7 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Game_Engine.Services.GameNodes
+namespace Game_Engine.Services.Scripts
 {
-    
+    abstract class ScriptAttribute : Attribute
+    {
+    }
 }

@@ -51,11 +51,12 @@
     <Compile Include="Objects\Internals\RenderBuf.cs" />
     <Compile Include="Objects\Internals\SceneBase.cs" />
     <Compile Include="Scripts\ProviderAttribute.cs" />
+    <Compile Include="Scripts\ScriptBase.cs" />
     <Compile Include="Services\GameNodes\NodeModules\NodeModule.cs" />
     <Compile Include="Services\GameNodes\NodeModules\SceneModule.cs" />
-    <Compile Include="Services\GameNodes\SystemBase.cs" />
     <Compile Include="Services\Input\InputSystem.cs" />
     <Compile Include="Services\RenderSystem\Configs\RendererConfigs.cs" />
+    <Compile Include="Services\Scripts\ScriptAttribute.cs" />
     <Compile Include="Services\Scripts\ScriptService.cs" />
     <Compile Include="Services\ServiceManager\ServiceRoot.cs" />
     <Compile Include="Services\ServiceManager\ServiceMessage\MessageRoot.cs" />

@@ -9,9 +9,14 @@ using System.Threading.Tasks;
 
 namespace Game_Engine
 {
-    [Provider]
-    class Input
+    [Injectable(typeof(InputSystem))]
+    class Input : ScriptBase
     {
         InputSystem _InputSystem;
+
+        public override void Start()
+        {
+            
+        }
     }
 }
