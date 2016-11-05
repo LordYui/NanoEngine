@@ -36,42 +36,42 @@
     <StartupObject>Game_Engine.Entry</StartupObject>
   </PropertyGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="Engine\App.config" />
     <None Include="OpenTK.dll.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Core\MainTick.cs" />
-    <Compile Include="Core\Time.cs" />
+    <Compile Include="Engine\Core\MainTick.cs" />
+    <Compile Include="Engine\Core\Time.cs" />
     <Compile Include="Entry.cs" />
-    <Compile Include="Injector\DependencyInjector.cs" />
-    <Compile Include="Injector\InjectableAttribute.cs" />
-    <Compile Include="Input.cs" />
-    <Compile Include="Logman\Log.cs" />
-    <Compile Include="Objects\Atom.cs" />
-    <Compile Include="Objects\Internals\BaseObject.cs" />
-    <Compile Include="Objects\Internals\RenderBuf.cs" />
-    <Compile Include="Objects\Internals\SceneBase.cs" />
-    <Compile Include="Scripts\ProviderAttribute.cs" />
-    <Compile Include="Scripts\ScriptBase.cs" />
-    <Compile Include="Services\GameNodes\NodeModules\NodeModule.cs" />
-    <Compile Include="Services\GameNodes\NodeModules\SceneModule.cs" />
-    <Compile Include="Services\Input\InputSystem.cs" />
-    <Compile Include="Services\Networking\Client\NetworkClient.cs" />
-    <Compile Include="Services\Networking\NetworkSystem.cs" />
-    <Compile Include="Services\RenderSystem\Configs\RendererConfigs.cs" />
-    <Compile Include="Services\RenderSystem\Configs\SunshineRenderContract.cs" />
-    <Compile Include="Services\Scripts\ScriptAttribute.cs" />
-    <Compile Include="Services\Scripts\ScriptService.cs" />
-    <Compile Include="Services\ServiceManager\ServiceRoot.cs" />
-    <Compile Include="Services\ServiceManager\ServiceMessage\MessageRoot.cs" />
-    <Compile Include="Settings\Settings.cs" />
-    <Compile Include="Services\GameNodes\NodeSystem.cs" />
-    <Compile Include="Services\GameNodes\GameNode.cs" />
-    <Compile Include="Services\RenderSystem\Renderer.cs" />
-    <Compile Include="Services\RenderSystem\RenderSystem.cs" />
-    <Compile Include="Services\Service.cs" />
-    <Compile Include="TestScene.cs" />
+    <Compile Include="Engine\Injector\DependencyInjector.cs" />
+    <Compile Include="Engine\Injector\InjectableAttribute.cs" />
+    <Compile Include="Game\Input.cs" />
+    <Compile Include="Engine\Logman\Log.cs" />
+    <Compile Include="Engine\Objects\Atom.cs" />
+    <Compile Include="Engine\Objects\Internals\BaseObject.cs" />
+    <Compile Include="Engine\Objects\Internals\RenderBuf.cs" />
+    <Compile Include="Engine\Objects\Internals\SceneBase.cs" />
+    <Compile Include="Engine\Scripts\ProviderAttribute.cs" />
+    <Compile Include="Engine\Scripts\ScriptBase.cs" />
+    <Compile Include="Engine\Services\GameNodes\NodeModules\NodeModule.cs" />
+    <Compile Include="Engine\Services\GameNodes\NodeModules\SceneModule.cs" />
+    <Compile Include="Engine\Services\Input\InputSystem.cs" />
+    <Compile Include="Engine\Services\Networking\Client\NetworkClient.cs" />
+    <Compile Include="Engine\Services\Networking\NetworkSystem.cs" />
+    <Compile Include="Engine\Services\RenderSystem\Configs\RendererConfigs.cs" />
+    <Compile Include="Engine\Services\RenderSystem\Configs\SunshineRenderContract.cs" />
+    <Compile Include="Engine\Services\Scripts\ScriptAttribute.cs" />
+    <Compile Include="Engine\Services\Scripts\ScriptService.cs" />
+    <Compile Include="Engine\Services\ServiceManager\ServiceRoot.cs" />
+    <Compile Include="Engine\Services\ServiceManager\ServiceMessage\MessageRoot.cs" />
+    <Compile Include="Engine\Settings\Settings.cs" />
+    <Compile Include="Engine\Services\GameNodes\NodeSystem.cs" />
+    <Compile Include="Engine\Services\GameNodes\GameNode.cs" />
+    <Compile Include="Engine\Services\RenderSystem\Renderer.cs" />
+    <Compile Include="Engine\Services\RenderSystem\RenderSystem.cs" />
+    <Compile Include="Engine\Services\Service.cs" />
+    <Compile Include="Game\TestScene.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="OpenTK, Version=1.1.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">

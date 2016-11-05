@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Game_Engine.Logman;
 
 namespace Game_Engine.Services.Scripts
 {
@@ -31,6 +32,8 @@ namespace Game_Engine.Services.Scripts
                 ScriptBase newScript = (ScriptBase)Activator.CreateInstance(t);
                 newScript.Start();
                 _ScriptList.Add(newScript);
+
+                Logger.Log(LogLevel.Info, "Loaded Script: " + t.Name);
             }
         }
 
