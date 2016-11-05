@@ -1,5 +1,5 @@
-﻿using Game_Engine.Services;
-using Game_Engine.Services.ServiceManager;
+﻿using Game_Engine.Engine.Services;
+using Game_Engine.Engine.Services.ServiceManager;
 using System;
 using System.Collections.Generic;
 using System.Linq;

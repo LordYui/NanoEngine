@@ -3,10 +3,12 @@ using System.Reflection;
 using Game_Engine.Services;
 using System.Collections.Generic;
 using System.Diagnostics;
-using Game_Engine.Logman;
-using Game_Engine.Scripts;
+using Game_Engine.Engine.Logman;
+using Game_Engine.Engine.Scripts;
+using Game_Engine.Engine.Services;
+using Game_Engine.Engine.Injector;
 
-namespace Game_Engine.Injector
+namespace Game_Engine.Engine.Injector
 {
     static class DependencyInjector
     {

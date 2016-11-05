@@ -1,11 +1,11 @@
-﻿using Game_Engine.Services.Scripts;
+﻿using Game_Engine.Engine.Services.Scripts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Game_Engine.Scripts
+namespace Game_Engine.Engine.Scripts
 {
     class ProviderAttribute : ScriptAttribute
     {

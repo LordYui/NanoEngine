@@ -1,10 +1,10 @@
-﻿using Game_Engine.Services.GameNodes;
+﻿using Game_Engine.Engine.Services.GameNodes;
 using System;
 using System.Collections.Generic;
 using Game_Engine.Injector;
 using System.Linq;
 
-namespace Game_Engine.Services
+namespace Game_Engine.Engine.Services
 {
     class NodeSystem : Service
     {

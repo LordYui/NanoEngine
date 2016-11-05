@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Game_Engine.Injector
+namespace Game_Engine.Engine.Injector
 {
     class InjectableAttribute : Attribute
     {

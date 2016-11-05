@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Game_Engine.Services.GameNodes.NodeModules
+namespace Game_Engine.Engine.Services.GameNodes.NodeModules
 {
     class SceneModule : NodeModule
     {

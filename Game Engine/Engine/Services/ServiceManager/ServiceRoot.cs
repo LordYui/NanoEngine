@@ -1,13 +1,9 @@
-﻿
-using Game_Engine.Services.Render;
-using Game_Engine.Services.ServiceManager.ServiceMessage;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Game_Engine.Services.ServiceManager.ServiceMessage;
 
-namespace Game_Engine.Services.ServiceManager
+namespace Game_Engine.Engine.Services.ServiceManager
 {
     internal class ServiceRoot
     {

@@ -1,12 +1,13 @@
 ﻿using Game_Engine.Engine.Services.Render;
 using Game_Engine.Engine.Services.Render.Configs;
-using Game_Engine.Injector;
+using Game_Engine.Engine.Services.RenderService;
+using Game_Engine.Engine.Injector;
 using Game_Engine.Services.ServiceManager.ServiceMessage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Game_Engine.Services.Render
+namespace Game_Engine.Engine.Services.Render
 {
     internal class RenderService : Service
     {
@@ -16,6 +17,7 @@ namespace Game_Engine.Services.Render
         List<RendererBase> _Renderers;
 
         RenderConf _Conf;
+        RendererModule _Module;
 
         internal override void Init()
         {

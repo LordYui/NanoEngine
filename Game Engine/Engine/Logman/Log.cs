@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Game_Engine.Logman
+namespace Game_Engine.Engine.Logman
 {
     public enum LogLevel
     {
@@ -14,7 +14,7 @@ namespace Game_Engine.Logman
         Debug
     }
 
-    static class Logger
+    static public class Logger
     { 
         public static LogLevel Level = LogLevel.Debug;
         public static void Log(LogLevel level, params object[] args)

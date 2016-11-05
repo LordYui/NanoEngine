@@ -1,11 +1,11 @@
-﻿using Game_Engine.Injector;
+﻿using Game_Engine.Engine.Injector;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Game_Engine.Scripts
+namespace Game_Engine.Engine.Scripts
 {
     abstract class ScriptBase
     {

@@ -1,13 +1,13 @@
 ﻿using Game_Engine.Injector;
-using Game_Engine.Services.Networking.Client;
-using Game_Engine.Services.Render;
+using Game_Engine.Engine.Services.Networking.Client;
+using Game_Engine.Engine.Services.Render;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Game_Engine.Services.Networking
+namespace Game_Engine.Engine.Services.Networking
 {
     [Injectable(typeof(Render.RenderService))]
     class NetworkSystem : Service

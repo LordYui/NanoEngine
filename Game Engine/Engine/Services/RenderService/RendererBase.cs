@@ -1,13 +1,13 @@
-﻿using Game_Engine.Injector;
+﻿using Game_Engine.Engine.Injector;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Game_Engine.Services.Render
+namespace Game_Engine.Engine.Services.Render
 {
-    [Injector.Injectable(typeof(RenderService))]
+    [Injectable(typeof(RenderService))]
     abstract class RendererBase
     {
         RenderService _RenderService;

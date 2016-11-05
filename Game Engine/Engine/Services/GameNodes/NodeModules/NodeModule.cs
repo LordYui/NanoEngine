@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Game_Engine.Objects.Internals;
 using Game_Engine.Objects;
 
-namespace Game_Engine.Services.GameNodes
+namespace Game_Engine.Engine.Services.GameNodes
 {
     abstract class NodeModule
     {

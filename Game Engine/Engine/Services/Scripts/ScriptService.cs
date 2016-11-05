@@ -1,13 +1,13 @@
-﻿using Game_Engine.Scripts;
-using Game_Engine;
+﻿using Game_Engine.Engine.Scripts;
+using Game_Engine.Engine;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Game_Engine.Logman;
+using Game_Engine.Engine.Logman;
 
-namespace Game_Engine.Services.Scripts
+namespace Game_Engine.Engine.Services.Scripts
 {
     class ScriptService : Service
     {

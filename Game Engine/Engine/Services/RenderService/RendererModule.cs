@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Game_Engine.Engine.Services.Scripts
+namespace Game_Engine.Engine.Services.RenderService
 {
-    abstract class ScriptAttribute : Attribute
+    class RendererModule
     {
     }
 }

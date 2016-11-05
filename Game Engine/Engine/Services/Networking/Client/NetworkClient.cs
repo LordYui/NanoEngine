@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Game_Engine.Services.Networking.Client
+namespace Game_Engine.Engine.Services.Networking.Client
 {
     class NetworkClient
     {
