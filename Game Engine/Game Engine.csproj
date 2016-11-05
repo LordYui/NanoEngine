@@ -41,6 +41,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Engine\Core\BootPriority.cs" />
     <Compile Include="Engine\Core\MainTick.cs" />
     <Compile Include="Engine\Core\Time.cs" />
     <Compile Include="Engine\Services\RenderService\Configs\RenderConf.cs" />

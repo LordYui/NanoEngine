@@ -30,6 +30,7 @@ namespace Game_Engine.Engine.Services
                 if (t != to)
                     return;
                 GameNode nGN = (GameNode)Activator.CreateInstance(t);
+                gameNodes.Add(nGN);
                 Logman.Logger.Log(Logman.LogLevel.Info, "Game node loaded: " + t.Name);
             }
         }

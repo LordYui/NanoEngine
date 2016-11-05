@@ -10,8 +10,6 @@ using Game_Engine.Engine.Injector;
 
 namespace Game_Engine.Engine.Services.Input
 {
-    // todo: fix priorities
-    [Injectable(typeof(RenderService))]
     class InputSystem : Service
     {
         RenderService _RenderSrvc;
@@ -22,6 +20,8 @@ namespace Game_Engine.Engine.Services.Input
         {
             base.Init();
             pressedKey = new List<Key>();
+            _RenderSrvc = SrvcRoot.GetService<RenderService>();
+
             _Win = _RenderSrvc._Window._Win;
 
             _Win.KeyDown += _Win_KeyDown;

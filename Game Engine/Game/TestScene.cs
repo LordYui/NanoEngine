@@ -17,14 +17,14 @@ namespace Game_Engine
         InputSystem inputs;
         override public void Start()
         {
-           
+            this.InjectSrvc();
         }
 
         override internal void Update(double delta)
         {
-           if(inputs.isKeyDown(OpenTK.Input.Key.S))
+            if (inputs.isKeyDown(OpenTK.Input.Key.E))
             {
-                Logger.Log(LogLevel.Info, "Pressing S");
+                Logger.Log(LogLevel.Info, "Pressing E");
             }
         }
     }

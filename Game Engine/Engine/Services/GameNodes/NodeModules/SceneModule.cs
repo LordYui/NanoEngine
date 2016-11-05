@@ -38,7 +38,10 @@ namespace Game_Engine.Engine.Services.GameNodes.NodeModules
 
         internal override void UpdateModule(double delta)
         {
-            throw new NotImplementedException();
+            foreach(SceneBase s in _Scenes)
+            {
+                s.Update(delta);
+            }
         }
     }
 }
