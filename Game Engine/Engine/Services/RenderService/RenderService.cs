@@ -87,7 +87,7 @@ namespace Game_Engine.Engine.Services.Render
             //_Module.
             renderBuf.Clear();
 
-            _Window.Update();
+            _Window.Update(delta);
         }
 
         internal bool isCorrectRenderContract(object o)
