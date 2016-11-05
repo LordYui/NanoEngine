@@ -8,7 +8,15 @@ namespace Game_Engine.Services.RenderSystem.Configs
 {
     class SunshineRenderContract
     {
-        char C { get; }
+        public char C;
+        public int X;
+        public int Y;
 
+        public SunshineRenderContract(char c, int x, int y)
+        {
+            C = c;
+            X = x;
+            Y = y;
+        }
     }
 }

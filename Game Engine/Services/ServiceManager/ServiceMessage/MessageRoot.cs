@@ -19,7 +19,7 @@ namespace Game_Engine.Services.ServiceManager.ServiceMessage
         internal void On(string n, MessageAct a)
         {
             MessageDefinition d = msgDefs.Find(m => m.Name == n);
-            if(d.Name != null)
+            if(d.Name == null)
                 msgDefs.Add(new ServiceMessage.MessageDefinition(n, a));
         }
 
@@ -27,12 +27,18 @@ namespace Game_Engine.Services.ServiceManager.ServiceMessage
         {
             MessageDefinition d = msgDefs.Find(m => m.Name == n);
             if (d.Name != null)
-                d.Act.DynamicInvoke(args);
+                d.Act.DynamicInvoke(new object[] { args });
         }
 
         public void Send(Type trgtSrvcType, string m, params object[] args)
         {
             Service c = _Parent.SrvcRoot.GetService(trgtSrvcType);
+            c.Message.Receive(m, _Parent, args);
+        }
+
+        public void SendDirect(ServiceRoot r, Type trgtSrvcType, string m, params object[] args)
+        {
+            Service c = r.GetService(trgtSrvcType);
             c.Message.Receive(m, _Parent, args);
         }
     }

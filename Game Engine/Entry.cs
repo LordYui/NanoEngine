@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Game_Engine.Injector;
 using Game_Engine.Core;
+using Game_Engine.Services.RenderSystem.Configs;
 
 namespace Game_Engine
 {
@@ -12,7 +13,7 @@ namespace Game_Engine
     {
         static void Main()
         {
-            MainTick mTick = new MainTick();
+            MainTick mTick = new MainTick(typeof(SunshineRenderContract));
         }
     }
 }

@@ -27,9 +27,9 @@ namespace Game_Engine.Services.RenderSystem
             atomBuffer.AddRange(aL);
         }
 
-        void setConfig(object o)
+        void setConfig(object[] o)
         {
-            SetConfig((RendererConfigs)o);
+            SetConfig(new RendererConfigs((Type)o[0]));
         }
 
         public void SetConfig(RendererConfigs conf)

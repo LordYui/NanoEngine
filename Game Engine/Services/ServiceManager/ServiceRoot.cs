@@ -1,4 +1,5 @@
 ﻿
+using Game_Engine.Services.RenderSystem;
 using Game_Engine.Services.ServiceManager.ServiceMessage;
 using System;
 using System.Collections.Generic;
@@ -11,10 +12,18 @@ namespace Game_Engine.Services.ServiceManager
     internal class ServiceRoot
     {
         List<Service> _Services;
+        MessageRoot Message;
+
         public ServiceRoot()
         {
             _Services = new List<Service>();
+            Message = new MessageRoot(null);
             InitializeServices();
+        }
+
+        public void SetRenderConfig(Type renderConf)
+        {
+            Message.SendDirect(this, typeof(RenderService), "set-config", renderConf);
         }
 
         void InitializeServices()

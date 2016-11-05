@@ -57,6 +57,8 @@
     <Compile Include="Services\GameNodes\NodeModules\NodeModule.cs" />
     <Compile Include="Services\GameNodes\NodeModules\SceneModule.cs" />
     <Compile Include="Services\Input\InputSystem.cs" />
+    <Compile Include="Services\Networking\Client\NetworkClient.cs" />
+    <Compile Include="Services\Networking\NetworkSystem.cs" />
     <Compile Include="Services\RenderSystem\Configs\RendererConfigs.cs" />
     <Compile Include="Services\RenderSystem\Configs\SunshineRenderContract.cs" />
     <Compile Include="Services\Scripts\ScriptAttribute.cs" />

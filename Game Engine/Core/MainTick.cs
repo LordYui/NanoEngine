@@ -13,10 +13,16 @@ namespace Game_Engine.Core
         ServiceRoot srvcRoot;
         bool isRunning = false;
 
-        public MainTick()
+        public MainTick(Type renderConf)
         {
             srvcRoot = new ServiceRoot();
+            SetRenderConfig(renderConf);
             Tick();
+        }
+
+        void SetRenderConfig(Type renderConfig)
+        {
+            srvcRoot.SetRenderConfig(renderConfig);
         }
 
         void Tick()
