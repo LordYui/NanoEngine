@@ -8,7 +8,7 @@ namespace Game_Engine.Services.RenderSystem.Configs
 {
     public class RendererConfigs
     {
-        Type renderContract;
+        public Type renderContract;
         public RendererConfigs(Type renderContractType)
         {
             renderContract = renderContractType;

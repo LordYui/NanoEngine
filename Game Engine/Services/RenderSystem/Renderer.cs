@@ -14,5 +14,13 @@ namespace Game_Engine.Services.RenderSystem
         {
             _Conf = c;
         }
+
+        public bool isCorrectRenderContract(object o)
+        {
+            Type t = _Conf.renderContract;
+            if(o.GetType() == t)
+                return true;
+            return false;
+        }
     }
 }

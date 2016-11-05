@@ -12,7 +12,7 @@ namespace Game_Engine.Services.RenderSystem
     internal class RenderService : Service
     {
         Renderer _Renderer;
-        List<Atom> atomBuffer = new List<Atom>();
+        List<object> renderBuf = new List<object>();
 
         internal override void Init()
         {
@@ -23,8 +23,13 @@ namespace Game_Engine.Services.RenderSystem
 
         void appendBuffer(params object[] o)
         {
-            Atom[] aL = (Atom[])o;
-            atomBuffer.AddRange(aL);
+            foreach(object nO in o)
+            {
+                if(_Renderer.isCorrectRenderContract(nO))
+                {
+                    renderBuf.Add(nO);
+                }
+            }
         }
 
         void setConfig(object[] o)
