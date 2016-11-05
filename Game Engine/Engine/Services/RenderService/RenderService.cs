@@ -6,6 +6,7 @@ using Game_Engine.Services.ServiceManager.ServiceMessage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Game_Engine.Engine.Services.RenderService.Configs;
 
 namespace Game_Engine.Engine.Services.Render
 {
@@ -23,6 +24,7 @@ namespace Game_Engine.Engine.Services.Render
         {
             base.Init();
             _Renderers = new List<Render.RendererBase>();
+            _Window = new Window();
             Message.On("append-buffer", new MessageAct(appendBuffer));
             Message.On("set-config", new MessageAct(setConfig));
             InitRenderers();
@@ -76,8 +78,16 @@ namespace Game_Engine.Engine.Services.Render
 
         internal override void UpdateService(double delta)
         {
-            //_Renderer.Update(delta, renderBuf.ToArray());
+            foreach(RendererBase r in _Renderers)
+            {
+                RenderContract[] contracts = r.PollRender<RenderContract>();
+
+                //renderBuf.AddRange(contracts);
+            }
+            //_Module.
             renderBuf.Clear();
+
+            _Window.Update();
         }
 
         internal bool isCorrectRenderContract(object o)

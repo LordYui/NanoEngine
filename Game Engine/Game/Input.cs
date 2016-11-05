@@ -1,5 +1,5 @@
-﻿using Game_Engine.Injector;
-using Game_Engine.Scripts;
+﻿using Game_Engine.Engine.Injector;
+using Game_Engine.Engine.Scripts;
 using Game_Engine.Engine.Services.Input;
 using System;
 using System.Collections.Generic;

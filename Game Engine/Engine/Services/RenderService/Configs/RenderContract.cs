@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Game_Engine.Engine.Services.Networking.Client
+namespace Game_Engine.Engine.Services.RenderService.Configs
 {
-    class NetworkClient
+    abstract class RenderContract
     {
     }
 }

@@ -44,6 +44,7 @@
     <Compile Include="Engine\Core\MainTick.cs" />
     <Compile Include="Engine\Core\Time.cs" />
     <Compile Include="Engine\Services\RenderService\Configs\RenderConf.cs" />
+    <Compile Include="Engine\Services\RenderService\Configs\RenderContract.cs" />
     <Compile Include="Engine\Services\RenderService\RendererBase.cs" />
     <Compile Include="Engine\Services\RenderService\RendererModule.cs" />
     <Compile Include="Engine\Services\RenderService\Window.cs" />
@@ -61,8 +62,6 @@
     <Compile Include="Engine\Services\GameNodes\NodeModules\NodeModule.cs" />
     <Compile Include="Engine\Services\GameNodes\NodeModules\SceneModule.cs" />
     <Compile Include="Engine\Services\Input\InputSystem.cs" />
-    <Compile Include="Engine\Services\Networking\Client\NetworkClient.cs" />
-    <Compile Include="Engine\Services\Networking\NetworkSystem.cs" />
     <Compile Include="Engine\Services\RenderService\Configs\SunshineRenderContract.cs" />
     <Compile Include="Engine\Services\Scripts\ScriptAttribute.cs" />
     <Compile Include="Engine\Services\Scripts\ScriptService.cs" />

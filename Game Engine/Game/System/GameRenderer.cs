@@ -14,7 +14,7 @@ namespace Game_Engine.Game.GameSystems
     {
         public override T[] PollRender<T>()
         {
-            throw new NotImplementedException();
+            return null;
         }
     }
 }

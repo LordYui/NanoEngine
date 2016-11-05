@@ -30,7 +30,7 @@ namespace Game_Engine.Core
             isRunning = true;
             while (isRunning)
             {
-                Console.ReadLine();
+                //Console.ReadLine();
                 srvcRoot.UpdateServices(Time.deltaTime);
                 Time.lastUpdate = DateTime.Now;
             }    
