@@ -1,8 +1,10 @@
 ﻿using Game_Engine.Engine.Services.Render;
 using Game_Engine.Engine.Services.Render.Configs;
+using Game_Engine.Injector;
 using Game_Engine.Services.ServiceManager.ServiceMessage;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Game_Engine.Services.Render
 {
@@ -11,20 +13,40 @@ namespace Game_Engine.Services.Render
         Window _Window;
         List<object> renderBuf = new List<object>();
 
+        List<RendererBase> _Renderers;
+
         RenderConf _Conf;
 
         internal override void Init()
         {
             base.Init();
+            _Renderers = new List<Render.RendererBase>();
             Message.On("append-buffer", new MessageAct(appendBuffer));
             Message.On("set-config", new MessageAct(setConfig));
+            InitRenderers();
+        }
+
+        void InitRenderers()
+        {
+            var rendererSubClasses =
+                from assembly in AppDomain.CurrentDomain.GetAssemblies()
+                from type in assembly.GetTypes()
+                where type.IsSubclassOf(typeof(RendererBase))
+                select type;
+
+            foreach (Type t in rendererSubClasses)
+            {
+                RendererBase r = (RendererBase)Activator.CreateInstance(t);
+                r.Init();
+                _Renderers.Add(r);
+            }
         }
 
         void appendBuffer(params object[] o)
         {
-            foreach(object nO in o)
+            foreach (object nO in o)
             {
-                if(isCorrectRenderContract(nO))
+                if (isCorrectRenderContract(nO))
                 {
                     renderBuf.Add(nO);
                 }

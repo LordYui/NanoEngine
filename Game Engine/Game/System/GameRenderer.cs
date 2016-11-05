@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 namespace Game_Engine.Game.GameSystems
 {
     [Injector.Injectable(typeof(RenderService))]
-    class GameRenderer : Service
+    class GameRenderer : RendererBase
     {
-        internal override void UpdateService(double delta)
+        public override T[] PollRender<T>()
         {
             throw new NotImplementedException();
         }

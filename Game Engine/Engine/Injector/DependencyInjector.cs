@@ -69,6 +69,37 @@ namespace Game_Engine.Injector
             return retObj;
         }
 
+        public static T InjectAndCreateOfType<T>(Type inTy)
+        {
+            Type t = typeof(T);
+            var mInfo = t.GetCustomAttributes();
+            List<Type> toInject = new List<Type>();
+            foreach (var at in mInfo)
+            {
+                if (at is InjectableAttribute)
+                {
+                    toInject.AddRange(((InjectableAttribute)at).InjectTypes);
+                }
+                else if (at is ProviderAttribute)
+                {
+                    toInject.AddRange(((ProviderAttribute)at).InjectTypes);
+                }
+            }
+
+            FieldInfo[] fInfos = t.GetFields(BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Public);
+            T retObj = (T)Activator.CreateInstance(t);
+            foreach (FieldInfo fI in fInfos)
+            {
+                Type inj = _injectableTypes.Find((ty => ty == fI.FieldType));
+                if (inj == null)
+                    continue;
+
+                fI.SetValue(retObj, Convert.ChangeType(typeof(T), inj));
+            }
+
+            return retObj;
+        }
+
         public static void Inject<T>(this T obj)
         {
             Type t = typeof(T);
