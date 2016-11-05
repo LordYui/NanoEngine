@@ -102,7 +102,7 @@ namespace Game_Engine.Engine.Injector
             return retObj;
         }
 
-        public static void Inject<T>(this T obj)
+        public static void InjectSrvc<T>(this T obj)
         {
             Type t = typeof(T);
             var attrInfo = t.GetCustomAttributes();

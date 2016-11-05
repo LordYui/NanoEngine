@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Game_Engine.Objects.Internals;
+using Game_Engine.Engine.Objects.Internals;
 
-namespace Game_Engine.Objects
+namespace Game_Engine.Engine.Objects
 {
     class Atom : BaseObject
     {

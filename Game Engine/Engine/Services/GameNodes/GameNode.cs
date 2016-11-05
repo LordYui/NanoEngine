@@ -1,6 +1,6 @@
 ﻿using Game_Engine.Engine.Services.GameNodes;
-using Game_Engine.Objects;
-using Game_Engine.Objects.Internals;
+using Game_Engine.Engine.Objects;
+using Game_Engine.Engine.Objects.Internals;
 using Game_Engine.Engine.Services.Render;
 using System;
 using System.Collections.Generic;

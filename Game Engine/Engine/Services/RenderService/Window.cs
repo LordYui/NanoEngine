@@ -11,7 +11,7 @@ namespace Game_Engine.Engine.Services.Render
 {
     class Window
     {
-        ConsoleWindow _Win;
+        public ConsoleWindow _Win { get; private set; }
         public Window()
         {
             Init();

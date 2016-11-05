@@ -15,7 +15,7 @@ namespace Game_Engine.Engine.Services
         public Service()
         {
             DependencyInjector.RegisterService(this);
-            this.Inject();
+            this.InjectSrvc();
         }
 
         abstract internal void UpdateService(double delta);

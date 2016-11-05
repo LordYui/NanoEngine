@@ -13,7 +13,7 @@ namespace Game_Engine.Engine.Services.Render
         RenderService _RenderService;
         public RendererBase()
         {
-            this.Inject();
+            this.InjectSrvc();
         }
 
         virtual public void Init() { }

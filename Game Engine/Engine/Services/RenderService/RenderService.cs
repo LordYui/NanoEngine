@@ -1,18 +1,16 @@
 ﻿using Game_Engine.Engine.Services.Render;
 using Game_Engine.Engine.Services.Render.Configs;
-using Game_Engine.Engine.Services.RenderService;
 using Game_Engine.Engine.Injector;
 using Game_Engine.Services.ServiceManager.ServiceMessage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Game_Engine.Engine.Services.RenderService.Configs;
 
 namespace Game_Engine.Engine.Services.Render
 {
     internal class RenderService : Service
     {
-        Window _Window;
+        public Window _Window { get; private set; }
         List<object> renderBuf = new List<object>();
 
         List<RendererBase> _Renderers;

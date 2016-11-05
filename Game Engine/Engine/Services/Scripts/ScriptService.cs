@@ -44,5 +44,15 @@ namespace Game_Engine.Engine.Services.Scripts
                 s.Update(delta);
             }
         }
+
+        public T GetScript<T>() where T : ScriptBase
+        {
+            foreach(ScriptBase s in _ScriptList)
+            {
+                if(s is T)
+                    return (T)s;
+            }
+            return null;
+        }
     }
 }

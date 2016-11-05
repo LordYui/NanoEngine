@@ -1,4 +1,4 @@
-﻿using Game_Engine.Engine.Services.RenderService.Configs;
+﻿using Game_Engine.Engine.Services.Render.Configs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
