@@ -11,6 +11,6 @@ namespace Game_Engine.Objects.Internals
     /// </summary>
     struct RenderBuf
     {
-
+        object[] renderObjects;
     }
 }

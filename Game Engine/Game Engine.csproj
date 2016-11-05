@@ -37,6 +37,8 @@
   </PropertyGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="OpenTK.dll.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\MainTick.cs" />
@@ -56,6 +58,7 @@
     <Compile Include="Services\GameNodes\NodeModules\SceneModule.cs" />
     <Compile Include="Services\Input\InputSystem.cs" />
     <Compile Include="Services\RenderSystem\Configs\RendererConfigs.cs" />
+    <Compile Include="Services\RenderSystem\Configs\SunshineRenderContract.cs" />
     <Compile Include="Services\Scripts\ScriptAttribute.cs" />
     <Compile Include="Services\Scripts\ScriptService.cs" />
     <Compile Include="Services\ServiceManager\ServiceRoot.cs" />
@@ -69,7 +72,17 @@
     <Compile Include="TestScene.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="OpenTK, Version=1.1.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenTK.Next.1.1.1612.8936\lib\net20\OpenTK.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SunshineConsole, Version=0.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <HintPath>..\packages\SunshineConsole.1.4.0\lib\NET40\SunshineConsole.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

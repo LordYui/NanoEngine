@@ -9,5 +9,6 @@ namespace Game_Engine.Objects
 {
     class Atom : BaseObject
     {
+
     }
 }

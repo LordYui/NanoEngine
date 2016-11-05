@@ -18,12 +18,18 @@ namespace Game_Engine.Services.RenderSystem
         {
             base.Init();
             Message.On("append-buffer", new MessageAct(appendBuffer));
+            Message.On("set-config", new MessageAct(setConfig));
         }
 
         void appendBuffer(params object[] o)
         {
             Atom[] aL = (Atom[])o;
             atomBuffer.AddRange(aL);
+        }
+
+        void setConfig(object o)
+        {
+            SetConfig((RendererConfigs)o);
         }
 
         public void SetConfig(RendererConfigs conf)

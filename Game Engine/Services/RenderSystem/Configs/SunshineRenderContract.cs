@@ -6,12 +6,9 @@ using System.Threading.Tasks;
 
 namespace Game_Engine.Services.RenderSystem.Configs
 {
-    public class RendererConfigs
+    class SunshineRenderContract
     {
-        Type renderContract;
-        public RendererConfigs(Type renderContractType)
-        {
-            renderContract = renderContractType;
-        }
+        char C { get; }
+
     }
 }
