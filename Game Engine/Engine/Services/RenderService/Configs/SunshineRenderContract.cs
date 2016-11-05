@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Game_Engine.Services.RenderSystem.Configs
+namespace Game_Engine.Services.RenderService.Configs
 {
     class SunshineRenderContract
     {

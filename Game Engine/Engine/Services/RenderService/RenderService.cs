@@ -1,5 +1,7 @@
-﻿using Game_Engine.Objects;
-using Game_Engine.Services.RenderSystem.Configs;
+﻿using Game_Engine.Engine.Services.RenderSystem;
+using Game_Engine.Objects;
+using Game_Engine.Services.RenderService.Configs;
+using Game_Engine.Services.RenderService.Internals;
 using Game_Engine.Services.ServiceManager.ServiceMessage;
 using System;
 using System.Collections.Generic;
@@ -7,11 +9,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Game_Engine.Services.RenderSystem
+namespace Game_Engine.Services.RenderService
 {
     internal class RenderService : Service
     {
         Renderer _Renderer;
+        Window _Window;
         List<object> renderBuf = new List<object>();
 
         internal override void Init()
@@ -53,7 +56,8 @@ namespace Game_Engine.Services.RenderSystem
 
         internal override void UpdateService(double delta)
         {
-            throw new NotImplementedException();
+            _Renderer.Update(delta, renderBuf.ToArray());
+            renderBuf.Clear();
         }
     }
 }

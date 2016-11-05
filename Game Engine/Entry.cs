@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Game_Engine.Injector;
 using Game_Engine.Core;
-using Game_Engine.Services.RenderSystem.Configs;
+using Game_Engine.Services.RenderService.Configs;
 
 namespace Game_Engine
 {
