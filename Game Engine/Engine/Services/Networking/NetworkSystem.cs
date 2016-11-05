@@ -1,6 +1,6 @@
 ﻿using Game_Engine.Injector;
 using Game_Engine.Services.Networking.Client;
-using Game_Engine.Services.RenderService;
+using Game_Engine.Services.Render;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace Game_Engine.Services.Networking
 {
-    [Injectable(typeof(RenderService.RenderService))]
+    [Injectable(typeof(Render.RenderService))]
     class NetworkSystem : Service
     {
         NetworkClient ply;
-        RenderService.RenderService renderServ;
+        Render.RenderService renderServ;
         internal override void Init()
         {
             base.Init();

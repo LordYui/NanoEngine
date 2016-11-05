@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Game_Engine.Injector;
-using Game_Engine.Core;
-using Game_Engine.Services.RenderService.Configs;
+﻿using Game_Engine.Core;
+using Game_Engine.Engine.Services.Render.Configs;
 
 namespace Game_Engine
 {

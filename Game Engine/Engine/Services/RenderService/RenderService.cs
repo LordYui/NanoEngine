@@ -1,10 +1,10 @@
-﻿using Game_Engine.Engine.Services.RenderService.Configs;
-using Game_Engine.Engine.Services.RenderSystem;
+﻿using Game_Engine.Engine.Services.Render;
+using Game_Engine.Engine.Services.Render.Configs;
 using Game_Engine.Services.ServiceManager.ServiceMessage;
 using System;
 using System.Collections.Generic;
 
-namespace Game_Engine.Services.RenderService
+namespace Game_Engine.Services.Render
 {
     internal class RenderService : Service
     {

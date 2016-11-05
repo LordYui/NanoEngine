@@ -44,6 +44,7 @@
     <Compile Include="Engine\Core\MainTick.cs" />
     <Compile Include="Engine\Core\Time.cs" />
     <Compile Include="Engine\Services\RenderService\Configs\RenderConf.cs" />
+    <Compile Include="Engine\Services\RenderService\RendererBase.cs" />
     <Compile Include="Engine\Services\RenderService\Window.cs" />
     <Compile Include="Entry.cs" />
     <Compile Include="Engine\Injector\DependencyInjector.cs" />

@@ -1,7 +1,7 @@
 ﻿using Game_Engine.Services.GameNodes;
 using Game_Engine.Objects;
 using Game_Engine.Objects.Internals;
-using Game_Engine.Services.RenderService;
+using Game_Engine.Services.Render;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +14,7 @@ namespace Game_Engine.Services.GameNodes
     {
     }
 
-    [Injector.InjectableAttribute(typeof(RenderService.RenderService))]
+    [Injector.InjectableAttribute(typeof(Render.RenderService))]
     class GameNode : _GameNodeParent
     {
         static int _ID = 0;

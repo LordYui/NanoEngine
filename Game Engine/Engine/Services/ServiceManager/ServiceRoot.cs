@@ -1,5 +1,5 @@
 ﻿
-using Game_Engine.Services.RenderService;
+using Game_Engine.Services.Render;
 using Game_Engine.Services.ServiceManager.ServiceMessage;
 using System;
 using System.Collections.Generic;
@@ -23,7 +23,7 @@ namespace Game_Engine.Services.ServiceManager
 
         public void SetRenderConfig(Type renderConf)
         {
-            Message.SendDirect(this, typeof(RenderService.RenderService), "set-config", renderConf);
+            Message.SendDirect(this, typeof(Render.RenderService), "set-config", renderConf);
         }
 
         void InitializeServices()
