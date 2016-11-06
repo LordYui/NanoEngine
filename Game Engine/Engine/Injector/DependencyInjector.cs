@@ -7,6 +7,7 @@ using Game_Engine.Engine.Logman;
 using Game_Engine.Engine.Scripts;
 using Game_Engine.Engine.Services;
 using Game_Engine.Engine.Injector;
+using System.Linq;
 
 namespace Game_Engine.Engine.Injector
 {
@@ -119,6 +120,31 @@ namespace Game_Engine.Engine.Injector
             foreach (FieldInfo fI in fInfos)
             {
                 Type inj = _injectableTypes.Find((ty => ty == fI.FieldType));
+                if (inj == null)
+                    continue;
+
+                object newSrvc = getServiceInstance(inj);
+                fI.SetValue(obj, Convert.ChangeType(newSrvc, inj));
+            }
+        }
+
+        public static void Inject<T>(this T obj)
+        {
+            Type t = typeof(T);
+            var attrInfo = t.GetCustomAttributes();
+            List<Type> toInject = new List<Type>();
+            foreach (var at in attrInfo)
+            {
+                if (at is InjectableAttribute)
+                {
+                    toInject.AddRange(((InjectableAttribute)at).InjectTypes);
+                }
+            }
+
+            FieldInfo[] fInfos = t.GetFields(BindingFlags.NonPublic | BindingFlags.Instance);
+            foreach (FieldInfo fI in fInfos)
+            {
+                Type inj = t.Assembly.GetTypes().Where(ty => ty == fI.FieldType).First();
                 if (inj == null)
                     continue;
 

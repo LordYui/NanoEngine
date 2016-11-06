@@ -20,7 +20,7 @@ namespace Game_Engine
             this.InjectSrvc();
         }
 
-        override internal void Update(double delta)
+        internal override void Update(double delta)
         {
             if (inputs.isKeyDown(OpenTK.Input.Key.E))
             {

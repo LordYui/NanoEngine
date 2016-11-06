@@ -44,6 +44,10 @@
     <Compile Include="Engine\Core\BootPriority.cs" />
     <Compile Include="Engine\Core\MainTick.cs" />
     <Compile Include="Engine\Core\Time.cs" />
+    <Compile Include="Engine\Objects\Internals\GameObjectBase.cs" />
+    <Compile Include="Engine\Objects\Internals\RenderObject.cs" />
+    <Compile Include="Engine\Objects\Internals\Transform.cs" />
+    <Compile Include="Engine\Services\GameNodes\GameObjects\GameObjectModules.cs" />
     <Compile Include="Engine\Services\RenderService\Configs\RenderConf.cs" />
     <Compile Include="Engine\Services\RenderService\Configs\RenderContract.cs" />
     <Compile Include="Engine\Services\RenderService\RendererBase.cs" />

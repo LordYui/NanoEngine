@@ -12,6 +12,7 @@ namespace Game_Engine.Engine.Scripts
         public ScriptBase()
         {
             this.InjectSrvc();
+            this.Inject();
         }
         abstract public void Start();
         virtual public void Update(double delta) { return; }

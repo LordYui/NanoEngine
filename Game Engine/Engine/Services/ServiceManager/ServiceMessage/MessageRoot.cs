@@ -7,25 +7,30 @@ using System.Linq.Expressions;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using Game_Engine.Engine.Injector;
+using Game_Engine.Engine.Objects.Internals;
 
 namespace Game_Engine.Services.ServiceManager.ServiceMessage
 {
+    [Injectable(typeof(ServiceRoot))]
     class MessageRoot
     {
-        Service _Parent;
-        public MessageRoot(Service parent)
+        ServiceRoot _SrvcRoot;
+        BaseObject _Parent;
+
+        public MessageRoot(BaseObject p)
         {
-            _Parent = parent;
+            _Parent = p;
         }
         List<MessageDefinition> msgDefs = new List<MessageDefinition>();
         internal void On(string n, MessageAct a)
         {
             MessageDefinition d = msgDefs.Find(m => m.Name == n);
-            if(d.Name == null)
+            if (d.Name == null)
                 msgDefs.Add(new ServiceMessage.MessageDefinition(n, a));
         }
 
-        public void Receive(string n, Service sender, params object[] args)
+        public void Receive(string n, BaseObject sender, params object[] args)
         {
             MessageDefinition d = msgDefs.Find(m => m.Name == n);
             if (d.Name != null)
@@ -34,7 +39,7 @@ namespace Game_Engine.Services.ServiceManager.ServiceMessage
 
         public void Send(Type trgtSrvcType, string m, params object[] args)
         {
-            Service c = _Parent.SrvcRoot.GetService(trgtSrvcType);
+            Service c = _SrvcRoot.GetService(trgtSrvcType);
             c.Message.Receive(m, _Parent, args);
         }
 
