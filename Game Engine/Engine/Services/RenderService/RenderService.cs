@@ -74,7 +74,7 @@ namespace Game_Engine.Engine.Services.Render
             }
         }
 
-        internal override void UpdateService(double delta)
+        internal override void Update(double delta)
         {
             foreach(RendererBase r in _Renderers)
             {

@@ -8,14 +8,19 @@ namespace Game_Engine.Engine.Services.GameNodes.GameObjects
 {
     class GameObjectModule : NodeModule
     {
-        internal override void Start()
+        
+        public override void Start()
         {
             base.Start();
         }
 
-        internal override void UpdateModule(double delta)
+        void Init() {
+
+        }
+
+        internal override void Update(double delta)
         {
-            //throw new NotImplementedException();
+            throw new NotImplementedException();
         }
     }
 }

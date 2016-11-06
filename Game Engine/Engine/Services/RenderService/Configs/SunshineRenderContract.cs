@@ -4,20 +4,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using OpenTK.Graphics;
 
 namespace Game_Engine.Engine.Services.Render.Configs
 {
     class SunshineRenderContract : RenderContract
     {
         public char C;
-        public int X;
-        public int Y;
+        public Color4 Fore;
+        public Color4 Back;
 
-        public SunshineRenderContract(char c, int x, int y)
+        public SunshineRenderContract(char c, Color4 x, Color4 y)
         {
             C = c;
-            X = x;
-            Y = y;
+            Fore = x;
+            Back = y;
         }
     }
 }

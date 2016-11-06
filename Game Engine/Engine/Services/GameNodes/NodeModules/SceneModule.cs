@@ -10,7 +10,7 @@ namespace Game_Engine.Engine.Services.GameNodes.NodeModules
     class SceneModule : NodeModule
     {
         List<SceneBase> _Scenes = new List<SceneBase>();
-        internal override void Start()
+        public override void Start()
         {
             base.Start();
             initScenes();
@@ -36,9 +36,9 @@ namespace Game_Engine.Engine.Services.GameNodes.NodeModules
             }
         }
 
-        internal override void UpdateModule(double delta)
+        internal override void Update(double delta)
         {
-            foreach(SceneBase s in _Scenes)
+            foreach (SceneBase s in _Scenes)
             {
                 s.Update(delta);
             }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Game_Engine.Engine.Services.Render;
 using Game_Engine.Engine.Injector;
 
-namespace Game_Engine.Game.GameSystems
+namespace Game_Engine.Game.GameSystems.Render
 {
     [Injectable(typeof(RenderService))]
     class GameRenderer : RendererBase

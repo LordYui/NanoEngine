@@ -8,6 +8,7 @@ using Game_Engine.Engine.Services.GameNodes.GameObjects;
 
 namespace Game_Engine.Engine.Objects.Internals
 {
+    [Injectable(typeof(GameObjectModule))]
     abstract class GameObjectBase : BaseObject
     {
         GameObjectModule _Mod;

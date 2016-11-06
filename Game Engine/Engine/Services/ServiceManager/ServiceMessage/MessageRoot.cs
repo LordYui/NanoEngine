@@ -37,17 +37,34 @@ namespace Game_Engine.Services.ServiceManager.ServiceMessage
                 d.Act.DynamicInvoke(new object[] { args });
         }
 
-        public void Send(Type trgtSrvcType, string m, params object[] args)
+        public void Send(Type trgtType, string m, params object[] args)
+        {
+            if (trgtType.IsAssignableFrom(typeof(Service)))
+                SendSrvc(trgtType, m, args);
+            else if (trgtType.IsAssignableFrom(typeof(BaseObject)))
+                SendGameObject(trgtType, m, args);
+            else
+                SendObject(trgtType, m, args);
+
+
+        }
+
+        private void SendSrvc(Type trgtSrvcType, string m, params object[] args)
         {
             Service c = _SrvcRoot.GetService(trgtSrvcType);
             c.Message.Receive(m, _Parent, args);
         }
 
-        public void SendDirect(ServiceRoot r, Type trgtSrvcType, string m, params object[] args)
+        private void SendGameObject(Type trgtObjType, string m, params object[] args)
         {
-            Service c = r.GetService(trgtSrvcType);
-            c.Message.Receive(m, _Parent, args);
+            //BaseObject bO = _SrvcRoot.GetService<NodeSystem>().<                             }
         }
+
+        private void SendObject(Type trgtObjType, string m, params object[] args)
+        {
+
+        }
+
     }
 
     public delegate void MessageAct(params object[] args);

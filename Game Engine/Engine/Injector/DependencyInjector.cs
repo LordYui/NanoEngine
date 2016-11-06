@@ -26,7 +26,7 @@ namespace Game_Engine.Engine.Injector
                         return srv;
                 }
             }
-            throw new ArgumentException();
+            return null;
         }
 
         public static void RegisterService(Service o)
@@ -148,8 +148,9 @@ namespace Game_Engine.Engine.Injector
                 if (inj == null)
                     continue;
 
-                object newSrvc = getServiceInstance(inj);
-                fI.SetValue(obj, Convert.ChangeType(newSrvc, inj));
+                object newObj = getServiceInstance(inj);
+                if(newObj != null)
+                    fI.SetValue(obj, Convert.ChangeType(newObj, inj));
             }
         }
     }

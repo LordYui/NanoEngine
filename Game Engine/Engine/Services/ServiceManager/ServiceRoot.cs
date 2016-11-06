@@ -10,7 +10,7 @@ namespace Game_Engine.Engine.Services.ServiceManager
     {
         List<Service> _Services;
         MessageRoot Message;
-
+        bool servicesLoaded;
         public ServiceRoot()
         {
             _Services = new List<Service>();
@@ -20,7 +20,7 @@ namespace Game_Engine.Engine.Services.ServiceManager
 
         public void SetRenderConfig(Type renderConf)
         {
-            Message.SendDirect(this, typeof(Render.RenderService), "set-config", renderConf);
+            Message.Send(typeof(Render.RenderService), "set-config", renderConf);
         }
 
         void InitializeServices()
@@ -33,10 +33,10 @@ namespace Game_Engine.Engine.Services.ServiceManager
                 select type;
 
             List<PrioritizedService> srvcList = new List<PrioritizedService>();
-            foreach(Type t in serviceSubclasses)
+            foreach (Type t in serviceSubclasses)
             {
                 PrioritizedService pS;
-                if(BootPriority.serviceInitPriority.ContainsKey(t))
+                if (BootPriority.serviceInitPriority.ContainsKey(t))
                 {
                     pS = new PrioritizedService(t, BootPriority.serviceInitPriority[t]);
                 }
@@ -47,38 +47,49 @@ namespace Game_Engine.Engine.Services.ServiceManager
                 srvcList.Add(pS);
             }
 
-            srvcList = srvcList.OrderByDescending(p => p.P).ToList();
+            srvcList = srvcList.OrderBy(p => p.P).ToList();
 
-            foreach(PrioritizedService t in srvcList)
+            foreach (PrioritizedService t in srvcList)
             {
                 Logman.Logger.Log(Logman.LogLevel.Info, "Loading service: " + t.T.Name);
                 Service srvc = (Service)Activator.CreateInstance(t.T);
+                srvc.Priority = t.P;
                 srvc.SrvcRoot = this;
-                MessageRoot msgR = (MessageRoot)Activator.CreateInstance(typeof(MessageRoot), srvc); ;
-                srvc.Message = msgR;
+                //MessageRoot msgR = (MessageRoot)Activator.CreateInstance(typeof(MessageRoot), srvc); ;
+                //srvc.Message = msgR;
                 _Services.Add(srvc);
                 Logman.Logger.Log(Logman.LogLevel.Info, "Service loaded: " + t.T.Name);
             }
-
+            Logman.Logger.Log(Logman.LogLevel.Info, "DONE LOADING SERVICES");
             _Services = _Services.OrderBy(s => s.Priority).ToList();
 
-            foreach(Service s in _Services)
+            foreach (Service s in _Services.OrderBy(t => t.Priority))
             {
                 s.Init();
+                Logman.Logger.Log(Logman.LogLevel.Debug, s.GetType().Name + " initialized");
             }
+            Logman.Logger.Log(Logman.LogLevel.Debug, "DONE INITIALIZING SERVICES");
+            servicesLoaded = true;
         }
-
+        bool updateStarted;
         internal void UpdateServices(double delta)
         {
-            foreach(Service srvc in _Services)
+            if (!servicesLoaded)
+                return;
+            if (!updateStarted)
             {
-                srvc.UpdateService(delta);
+                updateStarted = true;
+                Logman.Logger.Log(Logman.LogLevel.Debug, "Done, starting update");
+            }
+            foreach (Service srvc in _Services)
+            {
+                srvc.Update(delta);
             }
         }
 
         public T GetService<T>() where T : Service
         {
-            foreach(Service srvc in _Services)
+            foreach (Service srvc in _Services)
             {
                 if (typeof(T) == srvc.GetType())
                     return (T)srvc;
@@ -86,7 +97,7 @@ namespace Game_Engine.Engine.Services.ServiceManager
             throw new ArgumentException();
         }
 
-        public Service GetService( Type T)
+        public Service GetService(Type T)
         {
             foreach (Service srvc in _Services)
             {

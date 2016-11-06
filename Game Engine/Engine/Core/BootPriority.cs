@@ -9,9 +9,12 @@ namespace Game_Engine.Engine.Core
 {
     static class BootPriority
     {
+        /// <summary>
+        /// Lower priority is better
+        /// </summary>
         public static Dictionary<Type, int> serviceInitPriority = new Dictionary<Type, int>()
         {
-            { typeof(RenderService), 10 }
+            { typeof(RenderService), -1 }
         };
     }
 }

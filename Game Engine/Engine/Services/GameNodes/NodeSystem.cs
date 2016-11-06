@@ -18,14 +18,14 @@ namespace Game_Engine.Engine.Services
 
         private void initNodes()
         {
-            var serviceSubclasses =
+            var nodesSubClasses =
                 from assembly in AppDomain.CurrentDomain.GetAssemblies()
                 from type in assembly.GetTypes()
-                where type.IsSubclassOf(typeof(_GameNodeParent))
+                where type.IsSubclassOf(typeof(GameNode))
                 select type;
 
             Type to = typeof(GameNode);
-            foreach (Type t in serviceSubclasses)
+            foreach (Type t in nodesSubClasses)
             {
                 if (t != to)
                     return;
@@ -35,12 +35,21 @@ namespace Game_Engine.Engine.Services
             }
         }
 
-        internal override void UpdateService(double delta)
+        internal override void Update(double delta)
         {
+            int inactiveNodes = 0;
             foreach(GameNode node in gameNodes)
             {
-                node.Update(delta);
+                if (node.Active)
+                    node.Update(delta);
+                else
+                    inactiveNodes++;
             }
+
+            if (inactiveNodes < gameNodes.Count - 1) // More than 1 Enabled at a time
+                Logman.Logger.Log(Logman.LogLevel.Errors, "More than one GameNode enabled !");
+            else if (inactiveNodes >= gameNodes.Count) // All disabled
+                Logman.Logger.Log(Logman.LogLevel.Errors, "No GameNode enabled !");
         }
     }
 }

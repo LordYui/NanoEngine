@@ -37,7 +37,7 @@ namespace Game_Engine.Engine.Services.Scripts
             }
         }
 
-        internal override void UpdateService(double delta)
+        internal override void Update(double delta)
         {
             foreach(ScriptBase s in _ScriptList)
             {

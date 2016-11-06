@@ -39,7 +39,7 @@ namespace Game_Engine.Engine.Services.Input
             pressedKey.Add(e.Key);
         }
 
-        internal override void UpdateService(double delta)
+        internal override void Update(double delta)
         {
             
             return;

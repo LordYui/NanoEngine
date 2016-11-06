@@ -7,27 +7,28 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Game_Engine.Services.ServiceManager.ServiceMessage;
 
 namespace Game_Engine.Engine.Services.GameNodes
 {
-    abstract class _GameNodeParent
-    {
-    }
-
     [Injector.InjectableAttribute(typeof(Render.RenderService))]
-    class GameNode : _GameNodeParent
+    class GameNode : BaseObject
     {
-        static int _ID = 0;
-        public int ID;
+        public bool Active { get; private set; }
 
         List<NodeModule> _Modules;
-        public GameNode()
+        public override void Start()
         {
-            ID = _ID++;
             _Modules = new List<NodeModule>();
             initModules();
+
+            Message.On("set-active", new MessageAct(SetActive));
         }
         
+        private void SetActive(object o)
+        {
+            Active = (bool)o;
+        }
         private void initModules()
         {
             var serviceSubclasses =
@@ -48,21 +49,21 @@ namespace Game_Engine.Engine.Services.GameNodes
             }
         }
 
-        internal void Update(double delta)
-        {
-            foreach(NodeModule m in _Modules)
-            {
-                if(m.Rendering)
-                {
-                    RenderBuf buf = PollRenderingModule(m);
-                }
-                m.UpdateModule(delta);
-            }
-        }
-
         internal RenderBuf PollRenderingModule(NodeModule m)
         {
             return new RenderBuf();
+        }
+
+        internal override void Update(double delta)
+        {
+            foreach (NodeModule m in _Modules)
+            {
+                if (m.Rendering)
+                {
+                    RenderBuf buf = PollRenderingModule(m);
+                }
+                m.Update(delta);
+            }
         }
     }
 }

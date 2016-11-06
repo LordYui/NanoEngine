@@ -1,24 +1,24 @@
 ﻿using Game_Engine.Engine.Injector;
+using Game_Engine.Engine.Objects.Internals;
 using Game_Engine.Engine.Services.ServiceManager;
 using Game_Engine.Services.ServiceManager.ServiceMessage;
 
 namespace Game_Engine.Engine.Services
 {
-    abstract class Service
+    abstract class Service : BaseObject
     {
         internal ServiceRoot SrvcRoot;
-        internal MessageRoot Message;
-        /// <summary>
-        /// Higher is lower priority
-        /// </summary>
         internal int Priority = 0;
-        public Service()
+
+        internal bool Ready = false;
+        public Service() : base()
         {
+            
             DependencyInjector.RegisterService(this);
             this.InjectSrvc();
-        }
+            Ready = true;
 
-        abstract internal void UpdateService(double delta);
+        }
         virtual internal void Init() { }
     }
 }

@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Game_Engine.Engine.Services.Input;
+using Game_Engine.Engine.Objects;
 
 namespace Game_Engine
 {
@@ -15,9 +16,11 @@ namespace Game_Engine
     class TestScene : SceneBase
     {
         InputSystem inputs;
+        TestObj a;
         override public void Start()
         {
             this.InjectSrvc();
+            a = new TestObj();
         }
 
         internal override void Update(double delta)
@@ -26,6 +29,14 @@ namespace Game_Engine
             {
                 Logger.Log(LogLevel.Info, "Pressing E");
             }
+        }
+    }
+
+    class TestObj : Atom
+    {
+        internal override void Update(double delta)
+        {
+            throw new NotImplementedException();
         }
     }
 }
