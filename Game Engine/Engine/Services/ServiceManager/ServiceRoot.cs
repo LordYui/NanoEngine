@@ -47,7 +47,7 @@ namespace Game_Engine.Engine.Services.ServiceManager
                 srvcList.Add(pS);
             }
 
-            srvcList = srvcList.OrderBy(p => p.P).ToList();
+            srvcList = srvcList.OrderByDescending(p => p.P).ToList();
 
             foreach (PrioritizedService t in srvcList)
             {
@@ -61,7 +61,6 @@ namespace Game_Engine.Engine.Services.ServiceManager
                 Logman.Logger.Log(Logman.LogLevel.Info, "Service loaded: " + t.T.Name);
             }
             Logman.Logger.Log(Logman.LogLevel.Info, "DONE LOADING SERVICES");
-            _Services = _Services.OrderBy(s => s.Priority).ToList();
 
             foreach (Service s in _Services)
             {
