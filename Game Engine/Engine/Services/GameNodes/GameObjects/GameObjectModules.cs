@@ -40,12 +40,23 @@ namespace Game_Engine.Engine.Services.GameNodes.GameObjects
             }
             return b;
         }
+
         internal override void Update(double delta)
         {
             foreach(GameObjectBase goB in _GameObjects)
             {
                 goB.Update(delta);
             }
+        }
+
+        public GameObjectBase GetGameObject(Type t)
+        {
+            foreach(GameObjectBase goB in _GameObjects)
+            {
+                if (goB.GetType() == t)
+                    return goB;
+            }
+            return null;
         }
     }
 }

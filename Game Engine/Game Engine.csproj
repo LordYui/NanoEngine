@@ -77,7 +77,9 @@
     <Compile Include="Engine\Services\RenderService\RenderService.cs" />
     <Compile Include="Engine\Services\Service.cs" />
     <Compile Include="Game\Atoms\PlayerAtom.cs" />
-    <Compile Include="Game\Systems\Nodes\MainNode.cs" />
+    <Compile Include="Game\Nodes\MainNode.cs" />
+    <Compile Include="Game\Systems\Input\InputConfig.cs" />
+    <Compile Include="Game\Systems\Input\InputService.cs" />
     <Compile Include="Game\Systems\Player\Movement\PlayerMovement.cs" />
     <Compile Include="Game\Systems\Player\PlayerService.cs" />
     <Compile Include="Game\TestScene.cs" />
@@ -95,6 +97,7 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

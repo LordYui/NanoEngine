@@ -13,11 +13,9 @@ namespace Game_Engine.Engine.Services
         internal bool Ready = false;
         public Service() : base()
         {
-            
             DependencyInjector.RegisterService(this);
             this.InjectSrvc();
             Ready = true;
-
         }
         //virtual internal void Init() { }
     }

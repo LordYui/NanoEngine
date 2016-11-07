@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Game_Engine.Engine.Injector;
 using Game_Engine.Engine.Objects.Internals;
+using Game_Engine.Engine.Services.GameNodes.GameObjects;
 
 namespace Game_Engine.Services.ServiceManager.ServiceMessage
 {
@@ -56,7 +57,8 @@ namespace Game_Engine.Services.ServiceManager.ServiceMessage
 
         private void SendGameObject(Type trgtObjType, string m, params object[] args)
         {
-            //BaseObject bO = _SrvcRoot.GetService<NodeSystem>().<                             }
+            BaseObject bO = _SrvcRoot.GetService<NodeSystem>().GetActiveNode().GetModule<GameObjectModule>().GetGameObject(trgtObjType);
+            bO.Message.Receive(m, _Parent, args);
         }
 
         private void SendObject(Type trgtObjType, string m, params object[] args)
