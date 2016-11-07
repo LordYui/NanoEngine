@@ -13,7 +13,7 @@ namespace Game_Engine.Engine.Objects.Internals
     abstract class GameObjectBase : BaseObject
     {
         GameObjectModule _Mod;
-        public GameObjectBase() 
+        public GameObjectBase()
         {
             this.Inject();
             Message._SrvcRoot = _Mod._GameNode._System.SrvcRoot;

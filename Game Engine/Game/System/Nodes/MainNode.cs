@@ -13,6 +13,11 @@ namespace Game_Engine.Game.Systems.Nodes
         {
         }
 
+        public override void Init()
+        {
+            //throw new NotImplementedException();
+        }
+
         internal override void Update(double delta)
         {
             base.Update(delta);

@@ -45,7 +45,7 @@
     <Compile Include="Engine\Core\MainTick.cs" />
     <Compile Include="Engine\Core\Time.cs" />
     <Compile Include="Engine\Objects\Internals\GameObjectBase.cs" />
-    <Compile Include="Engine\Objects\Internals\RenderObject.cs" />
+    <Compile Include="Engine\Objects\Internals\RenderBase.cs" />
     <Compile Include="Engine\Objects\Internals\Transform.cs" />
     <Compile Include="Engine\Services\GameNodes\GameObjects\GameObjectModules.cs" />
     <Compile Include="Engine\Services\RenderService\Configs\RenderConf.cs" />
@@ -56,6 +56,7 @@
     <Compile Include="Entry.cs" />
     <Compile Include="Engine\Injector\DependencyInjector.cs" />
     <Compile Include="Engine\Injector\InjectableAttribute.cs" />
+    <Compile Include="Game\Atoms\GameObject.cs" />
     <Compile Include="Game\Input.cs" />
     <Compile Include="Engine\Logman\Log.cs" />
     <Compile Include="Engine\Objects\Atom.cs" />
@@ -80,6 +81,7 @@
     <Compile Include="Game\Atoms\PlayerAtom.cs" />
     <Compile Include="Game\System\Render\GameRenderer.cs" />
     <Compile Include="Game\System\Nodes\MainNode.cs" />
+    <Compile Include="Game\System\Render\RenderObject.cs" />
     <Compile Include="Game\TestScene.cs" />
   </ItemGroup>
   <ItemGroup>

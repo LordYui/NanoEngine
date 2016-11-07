@@ -1,4 +1,6 @@
-﻿using Game_Engine.Engine.Objects.Internals;
+﻿using Game_Engine.Engine.Injector;
+using Game_Engine.Engine.Objects.Internals;
+using Game_Engine.Engine.Services.GameNodes.GameObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,10 +12,19 @@ namespace Game_Engine.Engine.Services.GameNodes.NodeModules
     class SceneModule : NodeModule
     {
         List<SceneBase> _Scenes = new List<SceneBase>();
-        public override void Start()
+        GameObjectModule _GameObjectModule;
+        public override void Init()
         {
-            base.Start();
+            base.Init();
             initScenes();
+            Rendering = true;
+        }
+
+        public override RenderBuf GetAtomRenders()
+        {
+            if (_GameObjectModule == null)
+                _GameObjectModule = _GameNode.GetModule<GameObjectModule>();
+            return _GameObjectModule.getGameObjectsRenderer();
         }
 
         private void initScenes()
@@ -30,7 +41,7 @@ namespace Game_Engine.Engine.Services.GameNodes.NodeModules
                 if (t.IsAssignableFrom(to))
                     return;
                 SceneBase nScen = (SceneBase)Activator.CreateInstance(t);
-                nScen.Start();
+                nScen.Init();
                 _Scenes.Add(nScen);
                 Logman.Logger.Log(Logman.LogLevel.Info, "Scene loaded: " + t.Name);
             }

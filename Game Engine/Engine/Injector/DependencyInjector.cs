@@ -142,22 +142,46 @@ namespace Game_Engine.Engine.Injector
                 }
             }
 
-            
-            
 
             FieldInfo[] fInfos = t.GetFields(BindingFlags.NonPublic | BindingFlags.Instance);
-            foreach (FieldInfo fI in fInfos)
+            foreach (Type toInj in toInject)
             {
-                if(fI.FieldType == typeof(NodeModule))
+                foreach (FieldInfo fI in fInfos)
                 {
-                    fI.SetValue(obj, GetModule<NodeModule>());
+                    if (toInj.IsSubclassOf(typeof(NodeModule)) && fI.FieldType.IsSubclassOf(typeof(NodeModule)))
+                    {
+                        fI.SetValue(obj, GetModule(toInj));
+                    }
+                    else if (toInj.IsSubclassOf(typeof(Service)) && fI.FieldType.IsSubclassOf(typeof(Service)))
+                    {
+                        object srvc = getServiceInstance(toInj);
+                        fI.SetValue(obj, srvc);
+                    }
                 }
             }
         }
 
-        private static T GetModule<T>()
-        {
+        private static List<NodeModule> _nodeModules = new List<NodeModule>();
 
+        internal static void RegisterModules(NodeModule[] modules)
+        {
+            _nodeModules.AddRange(modules);
+        }
+
+        private static object GetModule(Type t)
+        {
+            if (_nodeModules.Count == 0)
+            {
+                Logman.Logger.Log(LogLevel.Errors, "Injector: module list not set");
+                throw new Exception("Injector: module list not set");
+            }
+
+            foreach(NodeModule m in _nodeModules)
+            {
+                if(m.GetType() == t)
+                    return m;
+            }
+            return null;
         }
     }
 }

@@ -16,9 +16,9 @@ namespace Game_Engine.Engine.Services.Input
         ConsoleWindow _Win;
         List<Key> pressedKey;
 
-        internal override void Init()
+        public override void Init()
         {
-            base.Init();
+            //base.Init();
             pressedKey = new List<Key>();
             _RenderSrvc = SrvcRoot.GetService<RenderService>();
 

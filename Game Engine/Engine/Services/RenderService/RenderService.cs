@@ -18,9 +18,9 @@ namespace Game_Engine.Engine.Services.Render
         RenderConf _Conf;
         RendererModule _Module;
 
-        internal override void Init()
+        public override void Init()
         {
-            base.Init();
+            //base.Init();
             _Renderers = new List<Render.RendererBase>();
             _Window = new Window();
             Message.On("append-buffer", new MessageAct(appendBuffer));

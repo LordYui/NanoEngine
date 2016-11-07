@@ -19,6 +19,6 @@ namespace Game_Engine.Engine.Services
             Ready = true;
 
         }
-        virtual internal void Init() { }
+        //virtual internal void Init() { }
     }
 }

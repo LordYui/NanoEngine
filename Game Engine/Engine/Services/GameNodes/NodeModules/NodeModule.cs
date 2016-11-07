@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Game_Engine.Engine.Objects.Internals;
 using Game_Engine.Engine.Objects;
+using Game_Engine.Engine.Injector;
 
 namespace Game_Engine.Engine.Services.GameNodes
 {
@@ -15,13 +16,19 @@ namespace Game_Engine.Engine.Services.GameNodes
 
         List<BaseObject> moduleObjects = new List<BaseObject>();
 
+        public override void Init()
+        {
+            
+        }
+
         public virtual RenderBuf GetAtomRenders()
         {
+            RenderBuf retRnd = new RenderBuf();
             foreach(BaseObject bO in moduleObjects)
             {
                 if(bO is Atom)
                 {
-                    // get render
+                    retRnd.renderObjects.Add(((Atom)bO).Render);
                 }  
             }
 

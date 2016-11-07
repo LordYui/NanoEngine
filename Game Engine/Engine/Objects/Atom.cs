@@ -9,7 +9,7 @@ namespace Game_Engine.Engine.Objects
 {
     abstract class Atom : GameObjectBase
     {
-        RenderObject _RenderObj;
+        public RenderBase Render; 
         Transform transform;
         public Atom()
         {

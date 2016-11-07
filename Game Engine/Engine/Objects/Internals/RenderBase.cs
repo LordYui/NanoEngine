@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace Game_Engine.Engine.Objects.Internals
 {
-    struct RenderObject
+    abstract class RenderBase
     {
-        
     }
 }

@@ -21,7 +21,7 @@ namespace Game_Engine.Engine.Logman
         {
             if(level <= Level)
             {
-                Console.WriteLine(string.Format("[{0}:{1}:{2}] [{3}] {4}", DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second, level.ToString(), string.Join(" ", args)));
+                Console.WriteLine(string.Format("[{0}:{1}:{2}] [{3}] {4}", DateTime.Now.Hour, DateTime.Now.Minute.ToString("D2"), DateTime.Now.Second.ToString("D2"), level.ToString(), string.Join(" ", args)));
             }
         }
     }

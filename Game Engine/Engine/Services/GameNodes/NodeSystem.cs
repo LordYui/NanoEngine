@@ -11,12 +11,12 @@ namespace Game_Engine.Engine.Services
     {
         List<GameNode> gameNodes = new List<GameNode>();
 
-        internal override void Init()
+        public override void Init()
         {
-            base.Init();
-            initNodes();
-
+            //base.Init();
             Message.On("register-gameobject", new Game_Engine.Services.ServiceManager.ServiceMessage.MessageAct(registerGameObject));
+
+            initNodes();
         }
 
         private void registerGameObject(object[] o)
@@ -43,6 +43,11 @@ namespace Game_Engine.Engine.Services
                 nGN._System = this;
                 gameNodes.Add(nGN);
                 Logman.Logger.Log(Logman.LogLevel.Info, "Game node loaded: " + t.Name);
+            }
+
+            foreach(GameNode gN in gameNodes)
+            {
+                gN.StartModules();
             }
         }
 

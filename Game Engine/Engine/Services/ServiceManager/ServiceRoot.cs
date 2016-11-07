@@ -20,7 +20,7 @@ namespace Game_Engine.Engine.Services.ServiceManager
 
         public void SetRenderConfig(Type renderConf)
         {
-            Message.Send(typeof(Render.RenderService), "set-config", renderConf);
+            GetService<Render.RenderService>().Message.Receive("set-config", null, renderConf);
         }
 
         void InitializeServices()

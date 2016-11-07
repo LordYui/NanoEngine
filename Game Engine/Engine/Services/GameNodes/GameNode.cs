@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Game_Engine.Services.ServiceManager.ServiceMessage;
+using Game_Engine.Engine.Injector;
 
 namespace Game_Engine.Engine.Services.GameNodes
 {
@@ -26,6 +27,12 @@ namespace Game_Engine.Engine.Services.GameNodes
             initModules();
 
             Message.On("set-active", new MessageAct(SetActive));
+            Message.On("register-module", new MessageAct(RegisterModule));
+        }
+
+        private void RegisterModule(object o)
+        {
+
         }
 
         private void SetActive(object o)
@@ -47,15 +54,25 @@ namespace Game_Engine.Engine.Services.GameNodes
                     return;
                 NodeModule nMod = (NodeModule)Activator.CreateInstance(t);
                 nMod._GameNode = this;
-                nMod.Start();
                 _Modules.Add(nMod);
                 Logman.Logger.Log(Logman.LogLevel.Info, "Node module loaded: " + t.Name);
+            }
+
+            DependencyInjector.RegisterModules(_Modules.ToArray());
+        }
+
+        internal void StartModules()
+        {
+            _Modules.Reverse();
+            foreach (NodeModule mod in _Modules)
+            {
+                mod.Init();
             }
         }
 
         public T GetModule<T>() where T : NodeModule
         {
-            foreach(NodeModule m in _Modules)
+            foreach (NodeModule m in _Modules)
             {
                 if (m is T)
                     return (T)m;
@@ -65,7 +82,7 @@ namespace Game_Engine.Engine.Services.GameNodes
 
         internal RenderBuf PollRenderingModule(NodeModule m)
         {
-            return new RenderBuf();
+            return m.GetAtomRenders();
         }
 
         internal override void Update(double delta)

@@ -3,6 +3,7 @@ using Game_Engine.Engine.Services.ServiceManager;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -31,9 +32,22 @@ namespace Game_Engine.Core
             isRunning = true;
             while (isRunning)
             {
-                //Console.ReadLine();
+                DateTime start = DateTime.Now;
+                // Do stuff
                 srvcRoot.UpdateServices(Time.deltaTime);
-                Time.lastUpdate = DateTime.Now;
+                DateTime end = DateTime.Now;
+
+                double computedDeltaTime = (end - start).TotalSeconds;
+                if (computedDeltaTime < 1.00 / Time.TargetFPS)
+                {
+                    Thread.Sleep((int)((1.00 / Time.TargetFPS - computedDeltaTime) * 1000));
+                    computedDeltaTime = (1.00 / Time.TargetFPS);
+                }
+
+                var setDeltaTimeMethod = typeof(Time).GetMethod("SetDeltaTime", BindingFlags.Static | BindingFlags.NonPublic);
+                setDeltaTimeMethod.Invoke(null, new object[] { computedDeltaTime }); // Super hacky way of calling a method, but for the greater good in the means of the user not setting his own delta time.
+
+                //Time.lastUpdate = DateTime.Now;
             }    
         }
     }

@@ -16,9 +16,10 @@ namespace Game_Engine
     [Injectable(typeof(InputSystem))]
     class TestScene : SceneBase
     {
-        override public void Start()
+        override public void Init()
         {
             this.InjectSrvc();
+            
             PlayerAtom Player = new PlayerAtom();
             
         }

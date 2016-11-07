@@ -46,8 +46,6 @@ namespace Game_Engine.Services.ServiceManager.ServiceMessage
                 SendGameObject(trgtType, m, args);
             else
                 SendObject(trgtType, m, args);
-
-
         }
 
         private void SendSrvc(Type trgtSrvcType, string m, params object[] args)

@@ -21,8 +21,8 @@ namespace Game_Engine.Engine.Objects.Internals
             this.InjectSrvc();
             this.Inject();
         }
-     
-        virtual public void Start() { }
+
+        abstract public void Init();
         abstract internal void Update(double delta);
     }
 }

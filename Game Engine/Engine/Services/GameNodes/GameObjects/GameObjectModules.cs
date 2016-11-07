@@ -1,4 +1,5 @@
-﻿using Game_Engine.Engine.Objects.Internals;
+﻿using Game_Engine.Engine.Objects;
+using Game_Engine.Engine.Objects.Internals;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,25 +11,41 @@ namespace Game_Engine.Engine.Services.GameNodes.GameObjects
     class GameObjectModule : NodeModule
     {
         List<GameObjectBase> _GameObjects;
-        public override void Start()
+        public override void Init()
         {
-            base.Start();
-        }
-
-        void Init()
-        {
-            _GameObjects = new List<Objects.Internals.GameObjectBase>();
+            base.Init();
+            _GameObjects = new List<GameObjectBase>();
             Message.On("register-gameobject", new Game_Engine.Services.ServiceManager.ServiceMessage.MessageAct(registerGameObject));
         }
 
         public void registerGameObject(object[] o)
         {
-            _GameObjects.Add((GameObjectBase)o[0]);
+            GameObjectBase gO = (GameObjectBase)o[0];
+            _GameObjects.Add(gO);
+            gO.Init();
+
         }
 
+        public RenderBuf getGameObjectsRenderer()
+        {
+            RenderBuf b = new Objects.Internals.RenderBuf();
+            foreach(GameObjectBase go in _GameObjects)
+            {
+                if(go is Atom)
+                {
+                    Atom a = (Atom)go;
+                    if(a.Render != null)
+                        b.renderObjects.Add(((Atom)go).Render);
+                }
+            }
+            return b;
+        }
         internal override void Update(double delta)
         {
-            //throw new NotImplementedException();
+            foreach(GameObjectBase goB in _GameObjects)
+            {
+                goB.Update(delta);
+            }
         }
     }
 }

@@ -12,9 +12,9 @@ namespace Game_Engine.Engine.Services.Scripts
     class ScriptService : Service
     {
         List<ScriptBase> _ScriptList;
-        internal override void Init()
+        public override void Init()
         {
-            base.Init();
+            //base.Init();
             _ScriptList = new List<ScriptBase>();
             initScripts();
         }
