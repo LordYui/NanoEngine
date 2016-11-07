@@ -11,6 +11,7 @@ namespace Game_Engine.Engine.Services.GameNodes
     abstract class NodeModule : BaseObject
     {
         internal bool Rendering = false;
+        internal GameNode _GameNode;
 
         List<BaseObject> moduleObjects = new List<BaseObject>();
 

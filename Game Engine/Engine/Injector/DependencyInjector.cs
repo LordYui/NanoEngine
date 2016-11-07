@@ -8,6 +8,7 @@ using Game_Engine.Engine.Scripts;
 using Game_Engine.Engine.Services;
 using Game_Engine.Engine.Injector;
 using System.Linq;
+using Game_Engine.Engine.Services.GameNodes;
 
 namespace Game_Engine.Engine.Injector
 {
@@ -141,17 +142,22 @@ namespace Game_Engine.Engine.Injector
                 }
             }
 
+            
+            
+
             FieldInfo[] fInfos = t.GetFields(BindingFlags.NonPublic | BindingFlags.Instance);
             foreach (FieldInfo fI in fInfos)
             {
-                Type inj = t.Assembly.GetTypes().Where(ty => ty == fI.FieldType).First();
-                if (inj == null)
-                    continue;
-
-                object newObj = getServiceInstance(inj);
-                if(newObj != null)
-                    fI.SetValue(obj, Convert.ChangeType(newObj, inj));
+                if(fI.FieldType == typeof(NodeModule))
+                {
+                    fI.SetValue(obj, GetModule<NodeModule>());
+                }
             }
+        }
+
+        private static T GetModule<T>()
+        {
+
         }
     }
 }

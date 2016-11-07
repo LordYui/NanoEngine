@@ -77,6 +77,7 @@
     <Compile Include="Engine\Services\GameNodes\GameNode.cs" />
     <Compile Include="Engine\Services\RenderService\RenderService.cs" />
     <Compile Include="Engine\Services\Service.cs" />
+    <Compile Include="Game\Atoms\PlayerAtom.cs" />
     <Compile Include="Game\System\Render\GameRenderer.cs" />
     <Compile Include="Game\System\Nodes\MainNode.cs" />
     <Compile Include="Game\TestScene.cs" />

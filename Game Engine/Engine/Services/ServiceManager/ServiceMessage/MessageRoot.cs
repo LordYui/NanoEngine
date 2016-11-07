@@ -15,12 +15,13 @@ namespace Game_Engine.Services.ServiceManager.ServiceMessage
     [Injectable(typeof(ServiceRoot))]
     class MessageRoot
     {
-        ServiceRoot _SrvcRoot;
+        internal ServiceRoot _SrvcRoot;
         BaseObject _Parent;
 
         public MessageRoot(BaseObject p)
         {
             _Parent = p;
+            this.InjectSrvc();
         }
         List<MessageDefinition> msgDefs = new List<MessageDefinition>();
         internal void On(string n, MessageAct a)
@@ -39,7 +40,7 @@ namespace Game_Engine.Services.ServiceManager.ServiceMessage
 
         public void Send(Type trgtType, string m, params object[] args)
         {
-            if (trgtType.IsAssignableFrom(typeof(Service)))
+            if (trgtType.BaseType == typeof(Service))
                 SendSrvc(trgtType, m, args);
             else if (trgtType.IsAssignableFrom(typeof(BaseObject)))
                 SendGameObject(trgtType, m, args);

@@ -9,34 +9,23 @@ using System.Text;
 using System.Threading.Tasks;
 using Game_Engine.Engine.Services.Input;
 using Game_Engine.Engine.Objects;
+using Game_Engine.Game.Atoms;
 
 namespace Game_Engine
 {
     [Injectable(typeof(InputSystem))]
     class TestScene : SceneBase
     {
-        InputSystem inputs;
-        TestObj a;
         override public void Start()
         {
             this.InjectSrvc();
-            a = new TestObj();
+            PlayerAtom Player = new PlayerAtom();
+            
         }
 
         internal override void Update(double delta)
         {
-            if (inputs.isKeyDown(OpenTK.Input.Key.E))
-            {
-                Logger.Log(LogLevel.Info, "Pressing E");
-            }
-        }
-    }
-
-    class TestObj : Atom
-    {
-        internal override void Update(double delta)
-        {
-            throw new NotImplementedException();
+            
         }
     }
 }

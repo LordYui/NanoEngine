@@ -17,6 +17,7 @@ namespace Game_Engine.Engine.Objects.Internals
         {
             ID = _ID++;
             Message = new MessageRoot(this);
+            
             this.InjectSrvc();
             this.Inject();
         }

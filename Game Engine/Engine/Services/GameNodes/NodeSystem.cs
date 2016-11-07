@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using Game_Engine.Engine.Injector;
 using System.Linq;
+using Game_Engine.Engine.Services.GameNodes.GameObjects;
 
 namespace Game_Engine.Engine.Services
 {
@@ -14,6 +15,15 @@ namespace Game_Engine.Engine.Services
         {
             base.Init();
             initNodes();
+
+            Message.On("register-gameobject", new Game_Engine.Services.ServiceManager.ServiceMessage.MessageAct(registerGameObject));
+        }
+
+        private void registerGameObject(object[] o)
+        {
+            GameNode n = GetActiveNode();
+            GameObjectModule goM = n.GetModule<GameObjectModule>();
+            goM.registerGameObject(o);
         }
 
         private void initNodes()
@@ -24,15 +34,26 @@ namespace Game_Engine.Engine.Services
                 where type.IsSubclassOf(typeof(GameNode))
                 select type;
 
-            Type to = typeof(GameNode);
+            
             foreach (Type t in nodesSubClasses)
             {
-                if (t != to)
+               if (t.IsAbstract)
                     return;
                 GameNode nGN = (GameNode)Activator.CreateInstance(t);
+                nGN._System = this;
                 gameNodes.Add(nGN);
                 Logman.Logger.Log(Logman.LogLevel.Info, "Game node loaded: " + t.Name);
             }
+        }
+
+        public GameNode GetActiveNode()
+        {
+            foreach(GameNode gN in gameNodes)
+            {
+                if (gN.Active)
+                    return gN;
+            }
+            return null;
         }
 
         internal override void Update(double delta)

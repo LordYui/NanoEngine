@@ -12,19 +12,22 @@ using Game_Engine.Services.ServiceManager.ServiceMessage;
 namespace Game_Engine.Engine.Services.GameNodes
 {
     [Injector.InjectableAttribute(typeof(Render.RenderService))]
-    class GameNode : BaseObject
+    abstract class GameNode : BaseObject
     {
         public bool Active { get; private set; }
-
+        internal NodeSystem _System;
         List<NodeModule> _Modules;
-        public override void Start()
+
+        public GameNode(bool defaultNode)
         {
+            Active = defaultNode;
+
             _Modules = new List<NodeModule>();
             initModules();
 
             Message.On("set-active", new MessageAct(SetActive));
         }
-        
+
         private void SetActive(object o)
         {
             Active = (bool)o;
@@ -43,10 +46,21 @@ namespace Game_Engine.Engine.Services.GameNodes
                 if (t.IsAssignableFrom(to))
                     return;
                 NodeModule nMod = (NodeModule)Activator.CreateInstance(t);
+                nMod._GameNode = this;
                 nMod.Start();
                 _Modules.Add(nMod);
                 Logman.Logger.Log(Logman.LogLevel.Info, "Node module loaded: " + t.Name);
             }
+        }
+
+        public T GetModule<T>() where T : NodeModule
+        {
+            foreach(NodeModule m in _Modules)
+            {
+                if (m is T)
+                    return (T)m;
+            }
+            return null;
         }
 
         internal RenderBuf PollRenderingModule(NodeModule m)
