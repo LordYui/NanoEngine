@@ -41,6 +41,7 @@ namespace Game_Engine.Engine.Services
                     return;
                 GameNode nGN = (GameNode)Activator.CreateInstance(t);
                 nGN._System = this;
+                nGN.Message._SrvcRoot = SrvcRoot;
                 gameNodes.Add(nGN);
                 Logman.Logger.Log(Logman.LogLevel.Info, "Game node loaded: " + t.Name);
             }

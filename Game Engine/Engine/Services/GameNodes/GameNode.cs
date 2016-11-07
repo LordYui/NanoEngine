@@ -1,23 +1,21 @@
-﻿using Game_Engine.Engine.Services.GameNodes;
-using Game_Engine.Engine.Objects;
+﻿using Game_Engine.Engine.Injector;
 using Game_Engine.Engine.Objects.Internals;
 using Game_Engine.Engine.Services.Render;
+using Game_Engine.Services.ServiceManager.ServiceMessage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Game_Engine.Services.ServiceManager.ServiceMessage;
-using Game_Engine.Engine.Injector;
 
 namespace Game_Engine.Engine.Services.GameNodes
 {
-    [Injector.InjectableAttribute(typeof(Render.RenderService))]
+    [Injectable(typeof(Render.RenderService))]
     abstract class GameNode : BaseObject
     {
         public bool Active { get; private set; }
         internal NodeSystem _System;
         List<NodeModule> _Modules;
+
+        RenderService _RenderService;
 
         public GameNode(bool defaultNode)
         {
@@ -25,6 +23,8 @@ namespace Game_Engine.Engine.Services.GameNodes
 
             _Modules = new List<NodeModule>();
             initModules();
+
+            this.InjectSrvc();
 
             Message.On("set-active", new MessageAct(SetActive));
             Message.On("register-module", new MessageAct(RegisterModule));
@@ -92,6 +92,7 @@ namespace Game_Engine.Engine.Services.GameNodes
                 if (m.Rendering)
                 {
                     RenderBuf buf = PollRenderingModule(m);
+                    Message.Send(typeof(RenderService), "append-buffer", buf);
                 }
                 m.Update(delta);
             }

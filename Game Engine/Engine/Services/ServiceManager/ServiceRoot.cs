@@ -63,7 +63,7 @@ namespace Game_Engine.Engine.Services.ServiceManager
             Logman.Logger.Log(Logman.LogLevel.Info, "DONE LOADING SERVICES");
             _Services = _Services.OrderBy(s => s.Priority).ToList();
 
-            foreach (Service s in _Services.OrderBy(t => t.Priority))
+            foreach (Service s in _Services)
             {
                 s.Init();
                 Logman.Logger.Log(Logman.LogLevel.Debug, s.GetType().Name + " initialized");

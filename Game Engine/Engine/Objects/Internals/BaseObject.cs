@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Game_Engine.Engine.Injector;
 using Game_Engine.Services.ServiceManager.ServiceMessage;
+using Game_Engine.Engine.Services.ServiceManager;
 
 namespace Game_Engine.Engine.Objects.Internals
 {
@@ -17,7 +18,7 @@ namespace Game_Engine.Engine.Objects.Internals
         {
             ID = _ID++;
             Message = new MessageRoot(this);
-            
+
             this.InjectSrvc();
             this.Inject();
         }

@@ -1,6 +1,7 @@
 ﻿using Game_Engine.Engine.Injector;
 using Game_Engine.Engine.Scripts;
 using Game_Engine.Engine.Services.Input;
+using OpenTK.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +17,12 @@ namespace Game_Engine
 
         public override void Start()
         {
-            
+            this.Inject();
+        }
+
+        public bool isKeyDown(Key k)
+        {
+            return _InputSystem.isKeyDown(k);
         }
     }
 }

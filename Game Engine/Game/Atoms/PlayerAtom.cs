@@ -5,8 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Game_Engine.Engine.Objects;
 using Game_Engine.Engine.Logman;
-using Game_Engine.Game.System.Render;
 using OpenTK.Graphics;
+using Game_Engine.Engine.Services.Render.Configs;
 
 namespace Game_Engine.Game.Atoms
 {
@@ -15,18 +15,12 @@ namespace Game_Engine.Game.Atoms
         public override void Init()
         {
             //base.Start();
-            Render = new RenderObject() { C = '@', Fore = Color4.White, Back = Color4.Black };
+            Render = new SunshineRenderContract('@', Color4.White, Color4.Black);
         }
 
-        double x = 0;
         internal override void Update(double delta)
         {
-            x += 1 * delta;
-            if(x >= 1)
-            {
-                Logger.Log(LogLevel.Debug, "1s player update");
-                x = 0;
-            }
+
         }
     }
 }

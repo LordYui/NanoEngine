@@ -1,5 +1,5 @@
 ﻿using Game_Engine.Engine.Objects;
-using Game_Engine.Game.System.Render;
+using Game_Engine.Engine.Services.Render.Configs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +10,6 @@ namespace Game_Engine.Game.Atoms
 {
     abstract class GameObject : Atom
     {
-        public RenderObject render;
+
     }
 }
