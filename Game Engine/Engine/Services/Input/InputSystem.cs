@@ -15,11 +15,13 @@ namespace Game_Engine.Engine.Services.Input
         RenderService _RenderSrvc;
         ConsoleWindow _Win;
         List<Key> pressedKey;
+        List<Key> releasedKey;
 
         public override void Init()
         {
             //base.Init();
             pressedKey = new List<Key>();
+            releasedKey = new List<Key>();
             _RenderSrvc = SrvcRoot.GetService<RenderService>();
 
             _Win = _RenderSrvc._Window._Win;
@@ -32,6 +34,8 @@ namespace Game_Engine.Engine.Services.Input
         {
             if (pressedKey.Contains(e.Key))
                 pressedKey.Remove(e.Key);
+            if (!releasedKey.Contains(e.Key))
+                releasedKey.Add(e.Key);
         }
 
         private void _Win_KeyDown(object sender, KeyboardKeyEventArgs e)
@@ -41,8 +45,8 @@ namespace Game_Engine.Engine.Services.Input
 
         internal override void Update(double delta)
         {
-            
-            return;
+            pressedKey.Clear();
+            releasedKey.Clear();
         }
 
         public bool isKeyDown(Key k)
@@ -52,7 +56,7 @@ namespace Game_Engine.Engine.Services.Input
 
         public bool isKeyPressed(Key k)
         {
-            return pressedKey.Contains(k);
+            return releasedKey.Contains(k);
         }
     }
 }

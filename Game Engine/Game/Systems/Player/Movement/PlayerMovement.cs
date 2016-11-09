@@ -1,4 +1,5 @@
 ﻿using Game_Engine.Engine.Objects.Internals;
+using Game_Engine.Game.Systems.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,9 +21,10 @@ namespace Game_Engine.Game.Systems.Player.Movement
            
         }
 
-        internal void onPlayerCommand(object o)
+        internal void onPlayerCommand(object[] o)
         {
-
+            InputConfig conf = (InputConfig)o[0];
+            conf.Del.Invoke();
         }
 
         internal override void Update(double delta)

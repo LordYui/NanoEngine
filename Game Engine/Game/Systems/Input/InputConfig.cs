@@ -19,5 +19,5 @@ namespace Game_Engine.Game.Systems.Input
         }
     }
 
-   delegate void KeyActionDelegate(Key k);
+   delegate void KeyActionDelegate();
 }

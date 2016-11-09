@@ -1,4 +1,5 @@
 ﻿using Game_Engine.Engine.Injector;
+using Game_Engine.Engine.Logman;
 using Game_Engine.Engine.Objects.Internals;
 using Game_Engine.Engine.Services;
 using Game_Engine.Engine.Services.Input;
@@ -21,9 +22,9 @@ namespace Game_Engine.Game.Systems.Input
             this.InjectSrvc();
             _Conf = new List<InputConfig>();
 
-            _Conf.Add(new Input.InputConfig(OpenTK.Input.Key.D, new KeyActionDelegate((k) =>
+            _Conf.Add(new Input.InputConfig(OpenTK.Input.Key.D, new KeyActionDelegate(() =>
             {
-                Message.Send(typeof(PlayerService), "player-control-pressed", k);
+                Logger.Log(LogLevel.Debug, "Input D hit");
             })));
         }
 
@@ -32,7 +33,7 @@ namespace Game_Engine.Game.Systems.Input
             foreach(InputConfig conf in _Conf)
             {
                 if (_InputSystem.isKeyDown(conf.Key))
-                    conf.Del.DynamicInvoke(conf.Key);
+                    Message.Send(typeof(PlayerService), "player-control-pressed", conf);
             }
         }
     }
