@@ -82,6 +82,7 @@
     <Compile Include="Game\Systems\Input\InputService.cs" />
     <Compile Include="Game\Systems\Player\Movement\PlayerMovement.cs" />
     <Compile Include="Game\Systems\Player\PlayerService.cs" />
+    <Compile Include="Game\Systems\Time\TimeService.cs" />
     <Compile Include="Game\TestScene.cs" />
   </ItemGroup>
   <ItemGroup>

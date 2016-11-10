@@ -17,34 +17,15 @@ namespace Game_Engine
     class TestScene : SceneBase
     {
         ScriptService _ScriptSrvc;
-        Input _InputSystem;
-        PlayerAtom ply;
         override public void Init()
         {
             this.InjectSrvc();
-            _InputSystem = _ScriptSrvc.GetScript<Input>();
-            ply = new PlayerAtom();
-            
+
         }
 
         internal override void Update(double delta)
         {
-            if (_InputSystem.isKeyDown(OpenTK.Input.Key.S))
-            {
-                ply.transform.Position += new OpenTK.Vector2(0, 1);
-            } 
-            else if(_InputSystem.isKeyDown(OpenTK.Input.Key.D))
-            {
-                ply.transform.Position += new OpenTK.Vector2(1, 0);
-            }
-            else if (_InputSystem.isKeyDown(OpenTK.Input.Key.W))
-            {
-                ply.transform.Position += new OpenTK.Vector2(0, -1);
-            }
-            else if (_InputSystem.isKeyDown(OpenTK.Input.Key.A))
-            {
-                ply.transform.Position += new OpenTK.Vector2(-1, 0);
-            }
+
         }
     }
 }
