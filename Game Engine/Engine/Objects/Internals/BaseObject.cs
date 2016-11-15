@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 using Game_Engine.Engine.Injector;
 using Game_Engine.Services.ServiceManager.ServiceMessage;
 using Game_Engine.Engine.Services.ServiceManager;
+using SFML.Graphics;
 
 namespace Game_Engine.Engine.Objects.Internals
 {
-    abstract class BaseObject
+    abstract class BaseObject : Transformable
     {
         static int _ID = 0;
         public int ID;
@@ -21,6 +22,7 @@ namespace Game_Engine.Engine.Objects.Internals
 
             this.InjectSrvc();
             this.Inject();
+            
         }
 
         abstract public void Init();

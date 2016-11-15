@@ -20,7 +20,6 @@ namespace Game_Engine.Engine.Services.Render
 
         void Init()
         {
-            
             _Win = new RenderWindow(new VideoMode(800, 600), "Test window");
             Logger.Log(LogLevel.Info, "Window created");
         }

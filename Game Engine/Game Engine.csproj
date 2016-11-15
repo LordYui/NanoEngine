@@ -46,7 +46,6 @@
     <Compile Include="Engine\Core\Time.cs" />
     <Compile Include="Engine\Objects\Internals\GameObjectBase.cs" />
     <Compile Include="Engine\Objects\Internals\RenderBase.cs" />
-    <Compile Include="Engine\Objects\Internals\Transform.cs" />
     <Compile Include="Engine\Services\GameNodes\GameObjects\GameObjectModules.cs" />
     <Compile Include="Engine\Services\RenderService\Configs\RenderConf.cs" />
     <Compile Include="Engine\Services\RenderService\Configs\SFMLRenderContract.cs" />
@@ -106,6 +105,9 @@
     <Content Include="csfml-window-2.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Game\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

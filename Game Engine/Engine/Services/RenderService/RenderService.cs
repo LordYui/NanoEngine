@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Game_Engine.Engine.Objects.Internals;
 using Game_Engine.Engine.Services.Render.Configs;
+using SFML.Graphics;
 
 namespace Game_Engine.Engine.Services.Render
 {
@@ -62,7 +63,8 @@ namespace Game_Engine.Engine.Services.Render
             {
                 foreach (SFMLRenderContract ctrct in rObj.renderObjects)
                 {
-                    // write to window
+                    // todo: add pos
+                    _Window._Win.Draw(ctrct.Draw, new RenderStates());
                 }
             }
             renderBuf.Clear();

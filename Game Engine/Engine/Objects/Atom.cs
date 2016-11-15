@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Game_Engine.Engine.Objects.Internals;
+using SFML.Graphics;
 
 namespace Game_Engine.Engine.Objects
 {
@@ -16,7 +17,7 @@ namespace Game_Engine.Engine.Objects
             {
                 if (_render == null)
                     return null;
-                _render.Pos = transform.Position;
+                _render.Pos = transform;
                 return _render;
             }
             protected set
@@ -28,6 +29,7 @@ namespace Game_Engine.Engine.Objects
         public Atom()
         {
             transform = new Transform();
+            
         }
 
         virtual public void Start() { }

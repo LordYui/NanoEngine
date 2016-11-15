@@ -1,4 +1,5 @@
 ﻿using Game_Engine.Engine.Objects.Internals;
+using SFML.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,10 +11,10 @@ namespace Game_Engine.Engine.Services.Render.Configs
     class SFMLRenderContract : RenderBase
     {
         // todo: sprites
-        public object Sprite;
-        public SFMLRenderContract(object s)
+        public Drawable Draw;
+        public SFMLRenderContract(Drawable d)
         {
-            Sprite = s;
+            Draw = d;
         }
     }
 }

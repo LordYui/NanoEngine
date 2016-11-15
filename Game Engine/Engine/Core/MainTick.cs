@@ -7,8 +7,9 @@ using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Game_Engine.Core;
 
-namespace Game_Engine.Core
+namespace Game_Engine.Engine.Core
 {
     class MainTick
     {
