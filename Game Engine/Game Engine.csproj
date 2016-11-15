@@ -49,13 +49,12 @@
     <Compile Include="Engine\Objects\Internals\Transform.cs" />
     <Compile Include="Engine\Services\GameNodes\GameObjects\GameObjectModules.cs" />
     <Compile Include="Engine\Services\RenderService\Configs\RenderConf.cs" />
+    <Compile Include="Engine\Services\RenderService\Configs\SFMLRenderContract.cs" />
     <Compile Include="Engine\Services\RenderService\RendererModule.cs" />
     <Compile Include="Engine\Services\RenderService\Window.cs" />
     <Compile Include="Entry.cs" />
     <Compile Include="Engine\Injector\DependencyInjector.cs" />
     <Compile Include="Engine\Injector\InjectableAttribute.cs" />
-    <Compile Include="Game\Atoms\GameObject.cs" />
-    <Compile Include="Game\Input.cs" />
     <Compile Include="Engine\Logman\Log.cs" />
     <Compile Include="Engine\Objects\Atom.cs" />
     <Compile Include="Engine\Objects\Internals\BaseObject.cs" />
@@ -76,23 +75,19 @@
     <Compile Include="Engine\Services\GameNodes\GameNode.cs" />
     <Compile Include="Engine\Services\RenderService\RenderService.cs" />
     <Compile Include="Engine\Services\Service.cs" />
-    <Compile Include="Game\Atoms\PlayerAtom.cs" />
-    <Compile Include="Game\Nodes\MainNode.cs" />
-    <Compile Include="Game\Systems\Input\InputConfig.cs" />
-    <Compile Include="Game\Systems\Input\InputService.cs" />
-    <Compile Include="Game\Systems\Player\Movement\PlayerMovement.cs" />
-    <Compile Include="Game\Systems\Player\PlayerService.cs" />
-    <Compile Include="Game\Systems\Time\TimeService.cs" />
-    <Compile Include="Game\TestScene.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="OpenTK, Version=1.1.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
-      <HintPath>..\packages\OpenTK.Next.1.1.1612.8936\lib\net20\OpenTK.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="sfmlnet-audio-2">
+      <HintPath>..\..\..\..\Documents\Visual Studio 2015\Projects\SFML.Net-2.2\lib\sfmlnet-audio-2.dll</HintPath>
     </Reference>
-    <Reference Include="SunshineConsole, Version=0.0.0.0, Culture=neutral, processorArchitecture=x86">
-      <HintPath>..\packages\SunshineConsole.1.4.0\lib\NET40\SunshineConsole.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="sfmlnet-graphics-2">
+      <HintPath>..\..\..\..\Documents\Visual Studio 2015\Projects\SFML.Net-2.2\lib\sfmlnet-graphics-2.dll</HintPath>
+    </Reference>
+    <Reference Include="sfmlnet-system-2">
+      <HintPath>..\..\..\..\Documents\Visual Studio 2015\Projects\SFML.Net-2.2\lib\sfmlnet-system-2.dll</HintPath>
+    </Reference>
+    <Reference Include="sfmlnet-window-2">
+      <HintPath>..\..\..\..\Documents\Visual Studio 2015\Projects\SFML.Net-2.2\lib\sfmlnet-window-2.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Drawing" />

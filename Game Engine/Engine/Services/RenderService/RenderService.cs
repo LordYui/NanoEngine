@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Game_Engine.Engine.Objects.Internals;
+using Game_Engine.Engine.Services.RenderService.Configs;
 
 namespace Game_Engine.Engine.Services.Render
 {
@@ -59,9 +60,9 @@ namespace Game_Engine.Engine.Services.Render
         {
            foreach (RenderBuf rObj in renderBuf)
             {
-                foreach (SunshineRenderContract ctrct in rObj.renderObjects)
+                foreach (SFMLRenderContract ctrct in rObj.renderObjects)
                 {
-                    _Window._Win.Write((int)ctrct.Pos.Y, (int)ctrct.Pos.X, ctrct.C, ctrct.Fore, ctrct.Back);
+                    // write to window
                 }
             }
             renderBuf.Clear();

@@ -16,6 +16,8 @@ namespace Game_Engine.Services.ServiceManager.ServiceMessage
     [Injectable(typeof(ServiceRoot))]
     class MessageRoot
     {
+        static internal List<MessageLog> Logs = new List<MessageLog>();
+
         internal ServiceRoot _SrvcRoot;
         BaseObject _Parent;
 
@@ -34,6 +36,7 @@ namespace Game_Engine.Services.ServiceManager.ServiceMessage
 
         public void Receive(string n, BaseObject sender, params object[] args)
         {
+            Logs.Add(new MessageLog(sender, _Parent, n, args));
             MessageDefinition d = msgDefs.Find(m => m.Name == n);
             if (d.Name != null)
                 d.Act.DynamicInvoke(new object[] { args });
@@ -79,6 +82,22 @@ namespace Game_Engine.Services.ServiceManager.ServiceMessage
         {
             Name = n;
             Act = a;
+        }
+    }
+
+    struct MessageLog
+    {
+        public BaseObject Sender;
+        public BaseObject Receiver;
+        public string Command;
+        public object[] Args;
+
+        public MessageLog(BaseObject s, BaseObject r, string c, params object[] a)
+        {
+            Sender = s;
+            Receiver = r;
+            Command = c;
+            Args = a;
         }
     }
 }
