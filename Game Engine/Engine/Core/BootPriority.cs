@@ -1,4 +1,6 @@
 ﻿using Game_Engine.Engine.Services;
+using Game_Engine.Engine.Services.AssetsProvider;
+using Game_Engine.Engine.Services.ConfigsProvider;
 using Game_Engine.Engine.Services.Input;
 using Game_Engine.Engine.Services.Render;
 using Game_Engine.Engine.Services.Scripts;
@@ -17,6 +19,8 @@ namespace Game_Engine.Engine.Core
         /// </summary>
         public static Dictionary<Type, int> serviceInitPriority = new Dictionary<Type, int>()
         {
+            { typeof(ConfigService), 6 },
+            { typeof(AssetService), 5 },
             { typeof(RenderService), 4 },
             { typeof(InputSystem), 3 },
             { typeof(ScriptService), 2 },
