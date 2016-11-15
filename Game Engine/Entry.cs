@@ -7,7 +7,7 @@ namespace Game_Engine
     {
         static void Main()
         {
-            MainTick mTick = new MainTick(typeof(SunshineRenderContract));
+            MainTick mTick = new MainTick(typeof(SFMLRenderContract));
         }
     }
 }

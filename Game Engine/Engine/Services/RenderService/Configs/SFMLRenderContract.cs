@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Game_Engine.Engine.Services.RenderService.Configs
+namespace Game_Engine.Engine.Services.Render.Configs
 {
     class SFMLRenderContract : RenderBase
     {

@@ -9,8 +9,8 @@ namespace Game_Engine.Engine.Services.Render
 {
     class RendererModule
     {
-        Window _Win;
-        public RendererModule(Window w)
+        WindowObject _Win;
+        public RendererModule(WindowObject w)
         {
             _Win = w;
         }

@@ -6,13 +6,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Game_Engine.Engine.Objects.Internals;
-using Game_Engine.Engine.Services.RenderService.Configs;
+using Game_Engine.Engine.Services.Render.Configs;
 
 namespace Game_Engine.Engine.Services.Render
 {
     internal class RenderService : Service
     {
-        public Window _Window { get; private set; }
+        public WindowObject _Window { get; private set; }
         List<object> renderBuf = new List<object>();
 
         RenderConf _Conf;
@@ -21,7 +21,7 @@ namespace Game_Engine.Engine.Services.Render
         public override void Init()
         {
             //base.Init();
-            _Window = new Window();
+            _Window = new WindowObject();
             Message.On("append-buffer", new MessageAct(appendBuffer));
             Message.On("set-config", new MessageAct(setConfig));
         }
