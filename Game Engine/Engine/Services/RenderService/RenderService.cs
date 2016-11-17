@@ -59,12 +59,12 @@ namespace Game_Engine.Engine.Services.Render
 
         internal override void Update(double delta)
         {
+            _Window._Win.Clear();
            foreach (RenderBuf rObj in renderBuf)
             {
                 foreach (SFMLRenderContract ctrct in rObj.renderObjects)
                 {
-                    // todo: add pos
-                    _Window._Win.Draw(ctrct.Draw, new RenderStates());
+                    _Window._Win.Draw(ctrct.Draw, new RenderStates(((Transformable)ctrct.Draw).Transform));
                 }
             }
             renderBuf.Clear();

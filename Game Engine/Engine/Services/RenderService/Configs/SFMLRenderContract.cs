@@ -15,6 +15,7 @@ namespace Game_Engine.Engine.Services.Render.Configs
         public SFMLRenderContract(Drawable d)
         {
             Draw = d;
+            //Transformable = (Transformable)d;
         }
     }
 }

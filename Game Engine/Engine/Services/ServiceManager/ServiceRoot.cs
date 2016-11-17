@@ -77,7 +77,7 @@ namespace Game_Engine.Engine.Services.ServiceManager
             if (!updateStarted)
             {
                 updateStarted = true;
-                Logman.Logger.Log(Logman.LogLevel.Debug, "Done, starting update");
+                Logman.Logger.Log(Logman.LogLevel.Info, "Done, starting update");
             }
             foreach (Service srvc in _Services)
             {

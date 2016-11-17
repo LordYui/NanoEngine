@@ -47,8 +47,6 @@ namespace Game_Engine.Engine.Core
 
                 var setDeltaTimeMethod = typeof(Time).GetMethod("SetDeltaTime", BindingFlags.Static | BindingFlags.NonPublic);
                 setDeltaTimeMethod.Invoke(null, new object[] { computedDeltaTime }); // Super hacky way of calling a method, but for the greater good in the means of the user not setting his own delta time.
-
-                //Time.lastUpdate = DateTime.Now;
             }    
         }
     }

@@ -1,5 +1,7 @@
 ﻿using Game_Engine.Engine.Objects;
 using Game_Engine.Engine.Objects.Internals;
+using Game_Engine.Engine.Services.Render.Configs;
+using SFML.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,8 +36,12 @@ namespace Game_Engine.Engine.Services.GameNodes.GameObjects
                 if(go is Atom)
                 {
                     Atom a = (Atom)go;
-                    if(a.Render != null)
-                        b.renderObjects.Add(((Atom)go).Render);
+                    SFMLRenderContract nB = a.Render;
+                    if (nB != null)
+                    {
+                        ((Transformable)nB.Draw).Position = a.Position;
+                        b.renderObjects.Add(a.Render);
+                    }
                 }
             }
             return b;

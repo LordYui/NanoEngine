@@ -16,7 +16,7 @@ namespace Game_Engine.Engine.Logman
 
     static public class Logger
     { 
-        public static LogLevel Level = LogLevel.Debug;
+        public static LogLevel Level = LogLevel.Info;
         public static void Log(LogLevel level, params object[] args)
         {
             if(level <= Level)

@@ -6,25 +6,22 @@ using System.Text;
 using System.Threading.Tasks;
 using Game_Engine.Engine.Objects.Internals;
 using SFML.Graphics;
+using Game_Engine.Game.Atoms;
+using SFML.System;
 
 namespace Game_Engine.Game
 {
     class MainScene : SceneBase
     {
-        Dictionary<string, Drawable> _Drawables;
+        TestAtom tA;
         public override void Init()
         {
-            _Drawables = new Dictionary<string, Drawable>();
-        }
-
-        private void LoadAssets()
-        {
-
+            tA = new TestAtom();
         }
 
         internal override void Update(double delta)
         {
-            
+            tA.Position += new Vector2f((float)(10 * delta), 0);
         }
     }
 }

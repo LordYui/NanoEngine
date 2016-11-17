@@ -5,19 +5,20 @@ using System.Text;
 using System.Threading.Tasks;
 using Game_Engine.Engine.Objects.Internals;
 using SFML.Graphics;
+using Game_Engine.Engine.Services.Render.Configs;
 
 namespace Game_Engine.Engine.Objects
 {
     abstract class Atom : GameObjectBase
     {
-        private RenderBase _render;
-        public RenderBase Render
+        private SFMLRenderContract _render;
+        public SFMLRenderContract Render
         {
             get
             {
                 if (_render == null)
                     return null;
-                _render.Pos = transform;
+                //_render.transform = ((Transformable)_render.Draw).Transform;
                 return _render;
             }
             protected set
@@ -29,7 +30,6 @@ namespace Game_Engine.Engine.Objects
         public Atom()
         {
             transform = new Transform();
-            
         }
 
         virtual public void Start() { }

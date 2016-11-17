@@ -27,7 +27,7 @@ namespace Game_Engine.Engine.Services.Render
         public void Update(double delta)
         {
             _Win.DispatchEvents();
-            _Win.Clear(Color.Black);
+            
             _Win.Display();
 
         }
